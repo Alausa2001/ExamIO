@@ -3,9 +3,9 @@ const { Sequelize, DataTypes } = require('sequelize');
 const { sequelize, mysqldb } = require('./engine/db');
 
 /* student details */
-class StudentDetails extends Sequelize.Model {}
+class Student extends Sequelize.Model {}
 
-StudentDetails.init({
+Student.init({
   firstName: {
     type: DataTypes.STRING(255),
     allowNull: false,
@@ -20,14 +20,14 @@ StudentDetails.init({
     unique: true,
   },
   studentId: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-    autoIncrement: true,
   },
 }, {
   sequelize,
-  tableName: 'student_details',
-  modelName: 'StudentDetails',
+  tableName: 'student',
+  modelName: 'Student',
   timestamp: true,
 });
 
@@ -62,11 +62,32 @@ ExamRecords.init({
   timestamp: true,
 });
 
+/* define Student and Exam relationship (one-to-many)*/
+Student.hasMany(ExamRecords);
+ExamRecords.belongsTo(Student, {
+  foreignKey: {
+    name: 'studentId',
+    allowNull: false,
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+  },
+});
+
+
 async function create() {
-  const exam = ExamRecords.build({date: '11', course: 'math', examId: '12'})
+  await mysqldb.createTables();
+  // await sequelize.sync({ force: true });
+  let student = Student.build({firstName: 'wale', lastName: 'adenuga', email: 'adenuga@gmail'});
+  student = await mysqldb.save(student);
+
+
+
+
+  const exam = ExamRecords.build({date: '11', course: 'math', examId: '12', studentId: student.studentId})
   const r = await mysqldb.save(exam);
   const n = await mysqldb.update(exam, {course: 'bio'});
-  console.log(n);
+
+  console.log(student);
   console.log(r);
 }
 create();

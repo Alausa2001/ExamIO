@@ -19,7 +19,7 @@ class MysqlClient {
   }
 
   async createTables() {
-    await this.mysqlClient.sync({ force: false });
+    await this.mysqlClient.sync({ force: true });
   }
 
   async isAlive() {
