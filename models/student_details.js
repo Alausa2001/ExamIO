@@ -24,6 +24,11 @@ Student.init({
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
 }, {
   sequelize,
   tableName: 'student',
@@ -62,7 +67,7 @@ ExamRecords.init({
   timestamp: true,
 });
 
-/* define Student and Exam relationship (one-to-many)*/
+/* define Student and Exam relationship (one-to-many) */
 Student.hasMany(ExamRecords);
 ExamRecords.belongsTo(Student, {
   foreignKey: {
@@ -77,7 +82,7 @@ ExamRecords.belongsTo(Student, {
 async function create() {
   await mysqldb.createTables();
   // await sequelize.sync({ force: true });
-  let student = Student.build({firstName: 'wale', lastName: 'adenuga', email: 'adenuga@gmail'});
+  let student = Student.build({firstName: 'wale', lastName: 'adenuga', email: 'adenuga@gmail', password: 'wale2001'});
   student = await mysqldb.save(student);
 
 
