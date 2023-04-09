@@ -62,7 +62,7 @@ ExamRecords.init({
   },
 }, {
   sequelize,
-  tableName: 'exam_records',
+  tableName: 'student_records',
   modelName: 'ExamRecords',
   timestamp: true,
 });
