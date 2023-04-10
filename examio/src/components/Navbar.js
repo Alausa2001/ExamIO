@@ -15,23 +15,23 @@ const Navbar = () => {
       </a>
       <div className="flex flex-row items-center gap-14">
         <ul className="flex gap-12">
-          <li className="text-lightColor font-semibold hover:text-buttonColor hover:font-extrabold">
+          <li className="text-lightColor font-semibold md:hover:text-buttonColor md:hover:font-extrabold">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li className="text-lightColor font-semibold hover:text-buttonColor hover:font-extrabold">
+          <li className="text-lightColor font-semibold md:hover:text-buttonColor hover:font-extrabold">
             <NavLink to="/">About</NavLink>
           </li>
-          <li className="text-lightColor font-semibold hover:text-buttonColor hover:font-extrabold">
+          <li className="text-lightColor font-semibold md:hover:text-buttonColor md:hover:font-extrabold">
             <NavLink to="/">Log In</NavLink>
           </li>
-          <li className="flex items-center gap-2 text-lightColor font-semibold hover:text-buttonColor hover:font-extrabold">
+          <li className="flex items-center gap-2 text-lightColor font-semibold md:hover:text-buttonColor md:hover:font-extrabold">
             Products
             <span>
               <AiOutlineCaretDown />
             </span>
           </li>
         </ul>
-        <button className="bg-transparent border-2 border-solid border-buttonColor px-5 py-2 rounded-lg text-buttonColor font-extrabold hover:bg-hoverColor hover:border hover:text-lightColor ease-in duration-300">
+        <button className="md:bg-transparent md:border-2 md:border-solid md:border-buttonColor px-5 py-2 rounded-lg md:text-buttonColor md:font-extrabold md:hover:bg-hoverColor md:hover:border md:hover:text-lightColor md:ease-in md:duration-300 text-lightColor bg-buttonColor font-bold">
           Get Started for Free
         </button>
 
