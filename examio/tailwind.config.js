@@ -11,6 +11,8 @@ module.exports = {
       lightColor: "#FDFDFD",
       buttonColor: "#F648C6",
       textColor: "#373333",
+      hoverColor: "#D02BA3",
+      transparent: "transparent",
     },
   },
   plugins: [],

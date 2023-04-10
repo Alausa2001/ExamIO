@@ -1,10 +1,11 @@
 import Navbar from "../../components/Navbar";
+// import ellipseone from "./images/Ellipse_one.png";
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      Home
+      <div>Hero</div>
     </div>
   );
 };
