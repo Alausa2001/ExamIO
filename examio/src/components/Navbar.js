@@ -5,11 +5,14 @@ import bghero from "./images/bg_hero.png";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-row justify-between px-20 py-5 z-50">
-      <div className="flex items-center gap-3 font-black text-lg text-lightColor">
+    <div className="bg-fixed flex flex-row justify-between px-20 py-5 z-50">
+      <a
+        href="/"
+        className="flex items-center gap-3 font-black text-lg text-lightColor"
+      >
         <img src={examio_icon} alt="examio-icon" />
         ExamIO
-      </div>
+      </a>
       <div className="flex flex-row items-center gap-14">
         <ul className="flex gap-12">
           <li className="text-lightColor font-semibold hover:text-buttonColor hover:font-extrabold">
