@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
 });
 
 /* post requests */
-router.post('student/signup', User.studentSignUp);
+router.post('/student/signup', User.studentSignUp);
 //router.post('student/signin', User.studentSignIn);
-//router.post('examiner/signup', User.examinerSignUp);
+router.post('/examiner/signup', User.examinerSignUp);
 //router.post('examiner/signin', User.examiner.SignIn);
 
 module.exports = router;
