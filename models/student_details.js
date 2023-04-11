@@ -78,23 +78,23 @@ StudentRecords.belongsTo(Student, {
 });
 
 async function create() {
-  //await mysqldb.createTables();
-  const field = ['firstName', 'lastName'];
-  const all = await mysqldb.selectAll(Student, field);
+  await mysqldb.createTables();
+  //const field = ['firstName', 'lastName'];
+  //const all = await mysqldb.selectAll(Student, field);
   // await sequelize.sync({ force: true });
-  /*
-  const student = {firstName: 'walexx', lastName: 'adenugax', email: 'walexadenuga@gmail', password: 'walexx2001'};
+  
+  const student = {firstName: 'wale', lastName: 'adenuga', email: 'wale@gmail', password: 'walexx2001'};
   const record = await mysqldb.createModel(Student, student);
 
   const exam = {date: '11', course: 'math', examId: '12', studentId: record.studentId};
   const newExam = await mysqldb.createModel(StudentRecords, exam)
   //const all = await mysqldb.selectAll(Student);
-  console.log(all);
+  // console.log(all);
   console.log(record);
   console.log(newExam);
-  */
-  console.log(all);
+  
+  // console.log(all);
 }
-create();
+//create();
 
 module.exports = { Student, StudentRecords };

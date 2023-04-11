@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const { Sequelize } = require('sequelize');
-const { Student, StudentRecords } = require('../student_details')
-const { Examiner, ExaminerRecords } = require('../examiner')
+// const { Student, StudentRecords } = require('../student_details')
+// const { Examiner, ExaminerRecords } = require('../examiner')
 
 const database = process.env.EXAMIO_DB || 'examio_db';
 const user = process.env.EXAMIO_USER || 'examio';
@@ -83,9 +83,11 @@ class MysqlClient {
     return obj;
   }
 
-  async userExists(table, email) {
-    const user = table.findOne({ where: { email: email }});
-    if (!user) return false;
+  async userExists(table, obj) {
+    const user = await table.findOne({ where: obj });
+    if (user === null) {
+      return false;
+    }
     return true;
   }
 }

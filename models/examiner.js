@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const { Sequelize, DataTypes } = require('sequelize');
 const { mysqldb, sequelize } = require('./engine/db');
 
@@ -91,6 +92,6 @@ async function create() {
   console.log(examiner);
   console.log(r);
 }
-create();
+//create();
 
 module.exports = { Examiner, ExaminerRecords };
