@@ -27,7 +27,6 @@ Student.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
 }, {
   sequelize,
@@ -37,9 +36,9 @@ Student.init({
 });
 
 /* Exam Records */
-class ExamRecords extends Sequelize.Model {}
+class StudentRecords extends Sequelize.Model {}
 
-ExamRecords.init({
+StudentRecords.init({
   date: {
     type: DataTypes.STRING(255),
     allowNull: false,
@@ -63,13 +62,13 @@ ExamRecords.init({
 }, {
   sequelize,
   tableName: 'student_records',
-  modelName: 'ExamRecords',
+  modelName: 'StudentRecords',
   timestamp: true,
 });
 
 /* define Student and Exam relationship (one-to-many) */
-Student.hasMany(ExamRecords);
-ExamRecords.belongsTo(Student, {
+Student.hasMany(StudentRecords);
+StudentRecords.belongsTo(Student, {
   foreignKey: {
     name: 'studentId',
     allowNull: false,
@@ -78,21 +77,24 @@ ExamRecords.belongsTo(Student, {
   },
 });
 
-
 async function create() {
-  await mysqldb.createTables();
+  //await mysqldb.createTables();
+  const field = ['firstName', 'lastName'];
+  const all = await mysqldb.selectAll(Student, field);
   // await sequelize.sync({ force: true });
-  let student = Student.build({firstName: 'wale', lastName: 'adenuga', email: 'adenuga@gmail', password: 'wale2001'});
-  student = await mysqldb.save(student);
+  /*
+  const student = {firstName: 'walexx', lastName: 'adenugax', email: 'walexadenuga@gmail', password: 'walexx2001'};
+  const record = await mysqldb.createModel(Student, student);
 
-
-
-
-  const exam = ExamRecords.build({date: '11', course: 'math', examId: '12', studentId: student.studentId})
-  const r = await mysqldb.save(exam);
-  const n = await mysqldb.update(exam, {course: 'bio'});
-
-  console.log(student);
-  console.log(r);
+  const exam = {date: '11', course: 'math', examId: '12', studentId: record.studentId};
+  const newExam = await mysqldb.createModel(StudentRecords, exam)
+  //const all = await mysqldb.selectAll(Student);
+  console.log(all);
+  console.log(record);
+  console.log(newExam);
+  */
+  console.log(all);
 }
 create();
+
+module.exports = { Student, StudentRecords };

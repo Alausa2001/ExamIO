@@ -92,3 +92,5 @@ async function create() {
   console.log(r);
 }
 create();
+
+module.exports = { Examiner, ExaminerRecords };
