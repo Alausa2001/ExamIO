@@ -20,4 +20,34 @@
     background-image: url(./components/images/bg_hero.png);
     background-repeat: no-repeat;
   }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    display: inline-block;
+    width: 100%;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    background-color: #eeeeee;
+    margin-top: 0.5rem;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  select:focus {
+    border: 1px solid #f648c6;
+    outline: none;
+    background-color: white;
+  }
+
+  input[type="text"]:active,
+  input[type="email"]:active,
+  input[type="password"]:active,
+  select:active {
+    border: 1px solid #2c2767;
+    outline: none;
+    background-color: white;
+  }
 }

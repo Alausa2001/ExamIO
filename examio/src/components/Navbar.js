@@ -21,7 +21,7 @@ const Navbar = () => {
             <NavLink to="/">About</NavLink>
           </li>
           <li className="text-lightColor font-semibold md:hover:text-buttonColor md:hover:font-extrabold">
-            <NavLink to="/">Log In</NavLink>
+            <NavLink to="/login">Log In</NavLink>
           </li>
           <li className="flex items-center gap-2 text-lightColor font-semibold md:hover:text-buttonColor md:hover:font-extrabold">
             Products
