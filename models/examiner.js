@@ -40,10 +40,6 @@ Examiner.init({
 class ExaminerRecords extends Sequelize.Model {}
 
 ExaminerRecords.init({
-  date: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },
   duration: {
     type: DataTypes.STRING(255),
     allowNull: true,
@@ -85,7 +81,7 @@ async function create() {
 
 
 
-  const exam = ExaminerRecords.build({date: '11', course: 'math', examinerId: examiner.examinerId})
+  const exam = ExaminerRecords.build({ duration: '120 mins', course: 'math', examinerId: examiner.examinerId})
   const r = await mysqldb.save(exam);
   const n = await mysqldb.update(exam, {course: 'bio'});
 

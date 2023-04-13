@@ -83,12 +83,20 @@ class MysqlClient {
     return obj;
   }
 
-  async userExists(table, obj) {
-    const user = await table.findOne({ where: obj });
+  async userExists(table, search) {
+    const user = await table.findOne({ where: search });
     if (user === null) {
       return false;
     }
     return true;
+  }
+
+  async getUser(table, search) {
+    if (table) {
+      const user = await table.findOne({ raw: true, where: search });
+      return user;
+    }
+    return null;
   }
 }
 

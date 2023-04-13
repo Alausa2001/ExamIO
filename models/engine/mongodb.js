@@ -15,7 +15,16 @@ class QuestionBank {
   isAlive() {
     return this.mongoClient.isConnected();
   }
+
+  async createExam(questions, examId) {
+    this.database = this.mongoClient.db();
+    this.quesBank = this.database.collection('questions');
+    const examQuestions = await this.quesBank.insertOne({ questions: questions, examId });
+    return examQuestions;
+  }
 }
 
 const mongod = new QuestionBank();
 setTimeout(() => console.log(mongod.isAlive()), 3000);
+
+module.exports = mongod;
