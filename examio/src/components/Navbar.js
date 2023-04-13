@@ -30,9 +30,12 @@ const Navbar = () => {
             </span>
           </li>
         </ul>
-        <button className="md:bg-transparent md:border-2 md:border-solid md:border-buttonColor px-5 py-2 rounded-lg md:text-buttonColor md:font-extrabold md:hover:bg-hoverColor md:hover:border md:hover:text-lightColor md:ease-in md:duration-300 text-lightColor bg-buttonColor font-bold">
+        <a
+          href="/signup"
+          className="md:bg-transparent md:border-2 md:border-solid md:border-buttonColor px-5 py-2 rounded-lg md:text-buttonColor md:font-extrabold md:hover:bg-hoverColor md:hover:border md:hover:text-lightColor md:ease-in md:duration-300 text-lightColor bg-buttonColor font-bold"
+        >
           Get Started for Free
-        </button>
+        </a>
 
         <span className="text-lightColor md:hidden cursor-pointer">
           <AiOutlineMenu />

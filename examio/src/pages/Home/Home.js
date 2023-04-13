@@ -10,6 +10,7 @@ import firstuser from "./images/First-User.png";
 import seconduser from "./images/Second-User.png";
 import thirduser from "./images/Third-User.png";
 import fourthuser from "./images/Fourth-User.png";
+import Footer from "../../components/Footer";
 
 const Home = () => {
   return (
@@ -31,9 +32,12 @@ const Home = () => {
           <p className="text-lightColor text-[1.5rem] mb-10">
             Secure, Reliable and User-Friendly
           </p>
-          <button className="bg-buttonColor text-lightColor px-12 py-3 text-[1.2rem] font-semibold rounded-lg md:hover:bg-hoverColor md:hover:font-extrabold duration-700">
+          <a
+            href="/signup"
+            className="bg-buttonColor text-lightColor px-12 py-3 text-[1.2rem] font-semibold rounded-lg md:hover:bg-hoverColor md:hover:font-extrabold duration-700"
+          >
             Get Started for Free
-          </button>
+          </a>
         </div>
         <div>
           <img src={sideimg} alt="" />
@@ -47,52 +51,56 @@ const Home = () => {
       <div className="flex flex-col items-center md:flex-row md:items-center px-[8rem] py-10 gap-10 bg-lightColor md:h-[40rem]">
         {/* ------------------ Left Section -------------- */}
 
-        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:hover:w-[80rem] md:hover:h-[35rem] md:hover:justify-center md:hover:bg-buttonColor md:hover:text-lightColor md:ease-in md:duration-500">
+        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:transition md:ease-in-out md:delay-150 md:hover:-translate-y-1 md:hover:scale-110 md:hover:bg-buttonColor md:hover:text-lightColor md:duration-300">
           <img src={leftimg} alt="" />
-          <h2 className="text-[30px] font-bold">Experience smarter testing</h2>
+          <h2 className="text-[30px] font-bold leading-none">
+            Experience smarter testing
+          </h2>
           <p>
             Lörem ipsum resk soligen. Krolagt musade läxrut på plahånde,
             airbaghjälm. Kytt döstäda. Mikropp hedersvåld: i egonar terarett.
-            Trakåska
           </p>
-          <button className="bg-buttonColor px-[1.5rem] py-[0.5rem] rounded-lg text-lightColor font-medium hover:px-[2rem] hover:bg-lightColor hover:text-buttonColor">
+          <button className="bg-buttonColor px-[1.5rem] py-[0.5rem] rounded-lg text-lightColor font-medium md:hover:px-[2rem] md:hover:bg-lightColor md:hover:text-buttonColor">
             Learn More
           </button>
         </div>
 
         {/* ------------------ Center Section -------------- */}
 
-        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:hover:w-[80rem] md:hover:h-[35rem] md:hover:justify-center md:hover:bg-buttonColor md:hover:text-lightColor md:ease-in md:duration-500">
-          <img src={centerimg} alt="" className="w-[250px]" />
-          <h2 className="text-[30px] font-bold -mt-9">Take Quality Exams</h2>
+        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:transition md:ease-in-out md:delay-150 md:hover:-translate-y-1 md:hover:scale-110 md:hover:bg-buttonColor md:hover:text-lightColor md:duration-30">
+          <img src={centerimg} alt="" className="w-[205px]" />
+          <h2 className="text-[30px] font-bold -mt-6 leading-none">
+            Take Quality Exams
+          </h2>
           <p>
             Lörem ipsum resk soligen. Krolagt musade läxrut på plahånde,
             airbaghjälm. Kytt döstäda. Mikropp hedersvåld: i egonar terarett.
             Trakåska intrateläda
           </p>
-          <button className="bg-buttonColor px-[1.5rem] py-[0.5rem] rounded-lg text-lightColor font-medium hover:px-[2rem] hover:bg-lightColor hover:text-buttonColor">
+          <button className="bg-buttonColor px-[1.5rem] py-[0.5rem] rounded-lg text-lightColor font-medium md:hover:px-[2rem] md:hover:bg-lightColor md:hover:text-buttonColor">
             Learn More
           </button>
         </div>
 
         {/* ------------------ Right Section -------------- */}
 
-        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:hover:w-[80rem] md:hover:h-[35rem] md:hover:justify-center md:hover:bg-buttonColor md:hover:text-lightColor md:ease-in md:duration-500">
+        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:transition md:ease-in-out md:delay-150 md:hover:-translate-y-1 md:hover:scale-110 md:hover:bg-buttonColor md:hover:text-lightColor md:duration-30">
           <img src={rightimg} alt="" className="mt-3" />
-          <h2 className="text-[30px] font-bold mt-3">Exam Preparations</h2>
-          <p className="my-3">
+          <h2 className="text-[30px] font-bold mt-3 leading-none">
+            Exam Preparations
+          </h2>
+          <p className="my-1">
             Lörem ipsum resk soligen. Krolagt musade läxrut på plahånde,
             airbaghjälm. Kytt döstäda. Mikropp hedersvåld: i egonar terarett.
             Trakåska
           </p>
-          <button className="bg-buttonColor px-[1.5rem] py-[0.5rem] rounded-lg text-lightColor font-medium hover:px-[2rem] hover:bg-lightColor hover:text-buttonColor mb-4">
+          <button className="bg-buttonColor px-[1.5rem] py-[0.5rem] rounded-lg text-lightColor font-medium md:hover:px-[2rem] md:hover:bg-lightColor md:hover:text-buttonColor">
             Learn More
           </button>
         </div>
       </div>
 
-      {/* ==================================== First Section 
-      Ends =============================================== */}
+      {/* ==================================== First Section Ends =============================================== */}
 
       {/* ==================================== Second Section Starts =============================================== */}
 
@@ -111,12 +119,14 @@ const Home = () => {
               className="relative bottom-[10.5rem] right-[1.2rem]"
             />
             <p className="text-lightColor text-[1.5rem] mb-10">
-              Lörem ipsum spermatvätt tratösm rebepp pinera samt tesa. Denengen
-              efal kongen.
+              Lörem ipsum spermatvätt tratösm.
             </p>
-            <button className="bg-buttonColor text-lightColor px-12 py-3 text-[1.2rem] font-semibold rounded-lg md:hover:bg-hoverColor md:hover:font-extrabold duration-700">
+            <a
+              href="/signup"
+              className="bg-buttonColor text-lightColor px-12 py-3 text-[1.2rem] font-semibold rounded-lg md:hover:bg-hoverColor md:hover:font-extrabold duration-700"
+            >
               Get Started for Free
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -125,59 +135,64 @@ const Home = () => {
 
       {/* ==================================== Third Section Starts =============================================== */}
 
-      <div className="bg-lightColor p-20">
-        <div className="flex flex-col md:flex-row justify-between items-baseline text-center">
+      <div className="bg-lightColor p-[8rem] flex flex-col gap-20">
+        <div className="flex flex-col md:flex-row justify-between items-baseline text-center gap-20">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <img src={firstuser} alt="" />
             <blockquote>
-              <p>
+              <p className="italic pb-5">
                 Lorem ipsum dolor sit amet consectetur. Venenatis odio felis
                 congue dui. Egestas sapien magna integer aliquam eget placerat
+                eget buon
               </p>
-              <p>~ Ogo Meninwa.</p>
-              <p>JAMB Student</p>
+              <p className="font-bold">~ Ogo Meninwa.</p>
+              <p className="text-sm">JAMB Student</p>
             </blockquote>
           </div>
-          <div>
+          <div className="flex flex-col md:flex-row items-center gap-10">
             <img src={seconduser} alt="" />
             <blockquote>
-              <p>
+              <p className="italic pb-5">
                 Lorem ipsum dolor sit amet consectetur. Venenatis odio felis
                 congue dui. Egestas sapien magna integer aliquam eget placerat
                 noyjoi juior kbuio huoonk jbnin kiur.
               </p>
-              <p>~ Nora Simeon.</p>
-              <p>Languages Teacher</p>
+              <p className="font-bold">~ Nora Simeon.</p>
+              <p className="text-sm">Languages Teacher</p>
             </blockquote>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center text-center">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-baseline text-center gap-20">
+          <div className="flex flex-col md:flex-row items-center gap-10">
             <img src={thirduser} alt="" />
             <blockquote>
-              <p>
+              <p className="italic pb-5">
                 Lorem ipsum dolor sit amet consectetur. Venenatis odio felis
                 congue dui. Egestas sapien magna integer aliquam eget placerat
                 hfiieui hihroo hirohi
               </p>
-              <p>~ Caroline Olabisi.</p>
-              <p>Albert High School Student</p>
+              <p className="font-bold">~ Caroline Olabisi.</p>
+              <p className="text-sm">Albert High School Student</p>
             </blockquote>
           </div>
-          <div>
+          <div className="flex flex-col md:flex-row items-center gap-10">
             <img src={fourthuser} alt="" />
             <blockquote>
-              <p>
+              <p className="italic pb-5">
                 Lorem ipsum dolor sit amet consectetur. Venenatis odio felis
                 congue dui. Egestas sapien magna integer aliquam eget placerat
                 noyjoi juior kbuio huoonk jbnin kiur.
               </p>
-              <p>~ Nosa Ndukumba. </p>
-              <p>Chemistry Teacher </p>
+              <p className="font-bold">~ Nosa Ndukumba. </p>
+              <p className="text-sm">Chemistry Teacher </p>
             </blockquote>
           </div>
         </div>
       </div>
+
+      {/* ==================================== Third Section Ends =============================================== */}
+
+      <Footer />
     </div>
   );
 };
