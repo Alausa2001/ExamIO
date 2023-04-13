@@ -2,9 +2,13 @@ import { NavLink } from "react-router-dom";
 import examio_icon from "./images/examio_icon.svg";
 import { AiOutlineMenu, AiOutlineCaretDown } from "react-icons/ai";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
->>>>>>> d6893b9 (updated npm packages)
+d6893b9 (updated npm packages)
+
+
+perpydel
 
 const Navbar = () => {
   return (
