@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import examio_icon from "./images/examio_icon.svg";
 import { AiOutlineMenu, AiOutlineCaretDown } from "react-icons/ai";
-import bghero from "./images/bg_hero.png";
+
 
 const Navbar = () => {
   return (
