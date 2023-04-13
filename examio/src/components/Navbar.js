@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import examio_icon from "./images/examio_icon.svg";
 import { AiOutlineMenu, AiOutlineCaretDown } from "react-icons/ai";
 
+
 const Navbar = () => {
   return (
     <div className="bg-fixed flex flex-row justify-between px-20 py-5 z-50">
