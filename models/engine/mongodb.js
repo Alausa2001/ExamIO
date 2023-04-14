@@ -19,8 +19,11 @@ class QuestionBank {
   async createExam(questions, examId) {
     this.database = this.mongoClient.db();
     this.quesBank = this.database.collection('questions');
-    const examQuestions = await this.quesBank.insertOne({ questions: questions, examId });
-    return examQuestions;
+    for (let question of questions) {
+      question.examId = examId;
+    }
+    const examQuestions = await this.quesBank.insertMany(questions);
+    return examQuestions.ops;
   }
 }
 

@@ -19,10 +19,10 @@ class Examination {
       return;
     }
 
-    const token = req.get('Authorization');
+    const token = req.header('Authorization');
     const examinerId = await redisClient.get(`auth_${token}`);
 
-    if (examinerId) {
+    if (!examinerId) {
       res.status(201).json({ error: 'unauthorized' });
       return;
     }
@@ -30,7 +30,7 @@ class Examination {
     const exam = await mysqldb.createModel(ExaminerRecords, obj);
     const examId = exam.examId;
     const examQuestions = await mongod.createExam(questions, examId);
-    res.status(201).json(examQuestions.ops);
+    res.status(201).json(examQuestions);
   }
 }
 
