@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+const { StudentRecords, Student } = require('../../models/student_details');
 const { ExaminerRecords, Examiner } = require('../../models/examiner');
 const { mysqldb, sequelize } = require('../../models/engine/db');
 const mongod = require('../../models/engine/mongodb');
@@ -35,14 +36,57 @@ class Examination {
 
   static async takeExam(req, res) {
     const { examId, page = 0 } = req.body;
+    /* To do: an exam should be taken once only */
 
     if (!examId) {
       res.status(400).json({ error: 'examId is missing' });
       return;
     }
-    const questions = await mongod.getQuestions(examId, page);
-    res.status(200).json({ questions });
+    const noOfQues = await mongod.countQuestions({ examId })
 
+    if (noOfQues <= 0) {
+      res.status(404).json({ error: 'exam doesnt exist' });
+    }
+
+    const questions = await mongod.getQuestions(examId, page);
+    res.status(200).json({ totalNoOfQuestions: noOfQues, questions });
+  }
+
+  static async submitExam(req, res) {
+    const { duration, course, score, examId } = req.body;
+
+    if (!examId) {
+      res.status(400).json({ error: 'examId is missing' });
+      return;
+    }
+    const noOfQues = await mongod.countQuestions({ examId });
+
+    if (noOfQues <= 0) {
+      res.status(404).json({ error: 'exam doesnt exist' });
+    }
+
+    if (!course) {
+      res.status(400).json({ error: 'course not specified' });
+      return;
+    }
+
+    if (!score) {
+      res.status(400).json({ error: 'score is missing' });
+      return;
+    }
+
+    const token = req.header('Authorization');
+    const studentId = await redisClient.get(`auth_${token}`);
+
+    /* To do: an exam should be taken once only */
+
+    if (!studentId) {
+      res.status(401).json({ error: 'unauthorized' });
+      return;
+    }
+    const studentRecord = { course, examId, duration, score, studentId };
+    const newRecord = await mysqldb.createModel(StudentRecords, studentRecord);
+    res.status(201).json({ 'status': 'submission successful', newRecord });
   }
 }
 
