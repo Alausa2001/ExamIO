@@ -85,6 +85,6 @@ def createexam(token):
     print(res.json())
 
 if __name__ == "__main__":
-    signup()
+    # signup()
     token = signin()
     createexam(token)
