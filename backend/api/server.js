@@ -6,7 +6,6 @@ const router = require('./routes/index');
 const app = express();
 //app.set('json spaces', 4)
 app.use(express.json());
-app.set('json spaces', 2)
 
 app.use(router);
 

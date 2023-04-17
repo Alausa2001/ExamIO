@@ -91,12 +91,30 @@ class MysqlClient {
     return true;
   }
 
+  async recordExists(table, search) {
+    const record = await table.findOne({ where: search });
+    if (record === null) {
+      return false;
+    }
+    return true;
+  }
+
   async getUser(table, search) {
     if (table) {
       const user = await table.findOne({ raw: true, where: search });
       return user;
     }
     return null;
+  }
+
+  async allRecords(table, match, field = null) {
+    /* get all rows in a table where a match is found */
+    if (field !== null) {
+      const allRecords = await table.findAll({ where: match, raw: true, attributes: field });
+      return allRecords;
+    }
+    const allRecords = await table.findAll({ where: match, raw: true });
+    return allRecords;
   }
 }
 
