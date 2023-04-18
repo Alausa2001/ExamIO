@@ -19,7 +19,7 @@ const Home = () => {
 
       {/* ==================================== Hero Section Start ================================================== */}
 
-      <div className="flex flex-col items-center justify-between pl-[5rem] pr-[2.5rem] py-10 md:flex-row">
+      <div className="md:h-[100vh] flex flex-col items-center justify-between pl-[5rem] pr-[2.5rem] py-10 md:flex-row">
         <div>
           <h1 className="w-[40rem] text-lightColor text-[3.2rem] font-extrabold italic">
             Accelerate your learning with Computer Based Testing...
