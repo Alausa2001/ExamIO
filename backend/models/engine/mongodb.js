@@ -16,6 +16,13 @@ class QuestionBank {
     return this.mongoClient.isConnected();
   }
 
+  async countQuestions(match) {
+    this.database = this.mongoClient.db();
+    this.quesBank = this.database.collection('questions');
+    const count = await this.quesBank.count(match);
+    return count;
+  }
+
   async createExam(questions, examId) {
     this.database = this.mongoClient.db();
     this.quesBank = this.database.collection('questions');
@@ -26,9 +33,13 @@ class QuestionBank {
     return examQuestions.ops;
   }
 
-  async getQuestions(examId, page) {
+  async getQuestions(examId, page = null) {
     this.database = this.mongoClient.db();
     this.quesBank = this.database.collection('questions');
+    if (page === null) {
+      const questions = await this.quesBank.find({ examId }).toArray();
+      return questions;
+    }
     const pipeline = [
       { $match: { examId } },
       { $skip: parseInt(page, 10) * 5},

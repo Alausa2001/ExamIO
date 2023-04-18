@@ -20,7 +20,7 @@ def takeexam(token):
     """ take exam """
 
     header = {'Authorization': token, 'Content-Type': 'application/json'}
-    data = {'examId': '1ac1ceaa-bd51-452f-90a2-4d188c07f55f', 'page': 2}
+    data = {'examId': '1f05ab02-50b4-408a-b413-f305dbd143b6', 'page': 2}
     res = requests.get('http://localhost:3000/student/take-exam', headers=header, json=data)
     print(res.json())
 

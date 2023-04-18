@@ -39,10 +39,6 @@ Student.init({
 class StudentRecords extends Sequelize.Model {}
 
 StudentRecords.init({
-  date: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },
   duration: {
     type: DataTypes.STRING(255),
     allowNull: true,
