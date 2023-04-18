@@ -7,7 +7,7 @@ const app = express();
 //app.set('json spaces', 4)
 app.use(express.json());
 
-app.use(router);
+app.use('/api', router);
 
 app.listen(3000, () => {
   console.log('server is running')});

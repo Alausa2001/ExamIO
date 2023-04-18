@@ -46,10 +46,12 @@ class Examination {
 
     if (noOfQues <= 0) {
       res.status(404).json({ error: 'exam doesnt exist' });
+      return;
     }
 
     const questions = await mongod.getQuestions(examId, page);
     res.status(200).json({ totalNoOfQuestions: noOfQues, questions });
+    return;
   }
 
   static async submitExam(req, res) {
