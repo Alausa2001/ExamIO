@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import Demotest from "./pages/Demotest/Demotest";
 import WriteExam from "./pages/WriteExam/WriteExam";
 import ExamHistory from "./pages/ExamHistory/ExamHistory";
+import ExamPage from "./pages/ExamPage/ExamPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/demo" element={<Demotest />} />
         <Route path="/write-exam" element={<WriteExam />} />
         <Route path="/history" element={<ExamHistory />} />
+        <Route path="/exam" element={<ExamPage />} />
       </Routes>
     </BrowserRouter>
   );

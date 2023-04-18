@@ -33,6 +33,17 @@
     margin-top: 0.5rem;
   }
 
+  #subjectId {
+    margin-left: -0.3rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    #subjectId {
+      width: 50%;
+      margin-left: -0.3rem;
+    }
+  }
+
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="password"]:focus,
@@ -61,13 +72,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
-    height: 70%;
+    height: 80%;
 
     background-color: white;
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
+  }
+
+  @media screen and (min-width: 768px) {
+    .modal {
+      height: 70%;
+    }
   }
 
   .overlay {

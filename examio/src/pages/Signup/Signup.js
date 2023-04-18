@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Signup = () => {
   const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => {
+  const startModal = () => {
     setShowModal(!showModal);
   };
 
@@ -110,7 +110,7 @@ const Signup = () => {
             />
           </div>
           <button
-            onClick={toggleModal}
+            onClick={startModal}
             type="submit"
             className="px-[1.5rem] py-[0.8rem] bg-buttonColor text-lightColor rounded-[0.5rem] text-lg font-bold md:hover:bg-hoverColor w-[70%] mx-auto"
           >
@@ -118,7 +118,7 @@ const Signup = () => {
           </button>
         </form>
       </div>
-      <Modal open={showModal} onClose={toggleModal} />
+      <Modal open={showModal} onClose={startModal} />
     </div>
   );
 };
