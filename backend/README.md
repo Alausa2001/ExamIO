@@ -248,14 +248,48 @@ Response
 {"totalNoOfQuestions":11,"questions":[{"course":"chemistry","question":"What is the smallest unit of an element?","options":[{"text":"Atom","correct":true},{"text":"Molecule","correct":false},{"text":"Ion","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the atomic number of carbon?","options":[{"text":"6","correct":true},{"text":"8","correct":false},{"text":"14","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the name of the process by which a solid changes directly to a gas?","options":[{"text":"Sublimation","correct":true},{"text":"Evaporation","correct":false},{"text":"Condensation","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the chemical formula for ammonia?","options":[{"text":"NH3","correct":true},{"text":"N2","correct":false},{"text":"CO2","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the name of the process by which a gas changes directly to a solid?","options":[{"text":"Deposition","correct":true},{"text":"Sublimation","correct":false},{"text":"Condensation","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"}]}
 ```
 
+#### POST method: /student/submit
 
+Parameters:  duration, course, score, examId
 
+Request Headers: {"Authorization": token, "Content-Type": "application/json" }
 
+```
+Request
+curl -XPOST http://api.examio.feranmi.tech/api/student/submit -H "Authorization: d22dfa44-0c10-4df0-a579-b65e5b28f097" -H "Content-Type: application/json" -d '{"examId": "06f3de30-bb2d-4218-8a3f-b72ad63f0505", "score": 71, "course": "Chemistry", "duration": "120 mins"}'
 
+Response
+{"status":"submission successful","newRecord":{"id":2,"course":"Chemistry","examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505","duration":"120 mins","score":71,"studentId":"6fdabf59-4563-4995-b2fa-2c93f2d0c41d","updatedAt":"2023-04-19T22:34:43.120Z","createdAt":"2023-04-19T22:34:43.120Z"}}
+```
 
+#### GET method: /student/history
 
+returns examId of all exams taken by a student
 
+Parameters: None
 
+Request Headers: {"Authorization": token, "Content-Type": "application/json" }
 
+```
+Request
+curl -XGET http://api.examio.feranmi.tech/api/student/history -H "Authorization: d22dfa44-0c10-4df0-a579-b65e5b28f097" -H "Content-Type: application/json"
 
+Response
+{"records":[{"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505","course":"Chemistry","createdAt":"2023-04-19T22:34:43.000Z"},{"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505","course":"Chemistry","createdAt":"2023-04-19T22:38:41.000Z"}]}
+```
 
+#### GET method: /student/history/:examId
+
+returns the records for a particular exam
+
+Parameters: None
+
+Request Headers: {"Authorization": token, "Content-Type": "application/json" }
+
+```
+Request
+curl -XGET http://api.examio.feranmi.tech/api/student/history/06f3de30-bb2d-4218-8a3f-b72ad63f0505 -H "Authorization: d22dfa44-0c10-4df0-a579-b65e5b28f097" -H "Content-Type: application/json"
+
+Response
+{"record":[{"id":2,"duration":"120 mins","course":"Chemistry","score":71,"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505","createdAt":"2023-04-19T22:34:43.000Z","updatedAt":"2023-04-19T22:34:43.000Z","studentId":"6fdabf59-4563-4995-b2fa-2c93f2d0c41d"]}
+```
