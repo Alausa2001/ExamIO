@@ -16,7 +16,7 @@ The routes are divided into two parts; the students' and the examiners' routes
 
 #### POST method:  /examiner/signup
 
-#### Parameters: firstname, lastname, email, password
+Parameters: firstname, lastname, email, password
 
 ```
 Request
@@ -47,7 +47,7 @@ Response
 
 #### POST method: /examiner/signin
 
-#### Parameters: email and password
+Parameters: email and password
 
 An authorization header is returned in the response header. The token in this header is used as
 a means of authorization for other routes. Aside being in the header, this token is also return as
@@ -87,10 +87,10 @@ Request
 ```
 
 #### POST method: /examiner/create-exam
-#### Parameters: The exam questions are sent as a list of objects 
+Parameters: The exam questions are sent as a list of objects 
 (see format [here](https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py))
 
-#### Request Headers: {'Authorization': token, Content-Type: 'application/json}
+Request Headers: {'Authorization': token, Content-Type: 'application/json}
 
 The token is gotten upon sign-in
 ```
@@ -128,9 +128,9 @@ This is the examId of the examination created
 
 Returns all the examId of exams created by an examiner
 
-#### Parameters: None
+Parameters: None
 
-#### Request Headers: {"Authorization": token, "Content-Type": "application/json" }
+Request Headers: {"Authorization": token, "Content-Type": "application/json" }
 
 ```
 Request
@@ -144,9 +144,9 @@ Response
 
 Returns all the questions of a particular exam
 
-#### Paramaters: None
+Paramaters: None
 
-#### Request Header: {"Authorization": token, "Content-Type": "application/json" }
+Request Header: {"Authorization": token, "Content-Type": "application/json" }
 
 ```
 Request
@@ -161,9 +161,9 @@ Response
 
 #### POST method: /student/signup
 
-#### Parameters: firstname, lastname, email, password
+Parameters: firstname, lastname, email, password
 
-#### Request Headers: "Content-Type: application/json"
+Request Headers: "Content-Type: application/json"
 
 ```
 Request
@@ -191,6 +191,67 @@ curl -XPOST http://api.examio.feranmi.tech/api/student/signup -H "Content-Type: 
 Response
 {"error":"user exists"}
 ```
+
+#### POST method: /student/signin
+
+Parameters: email, password
+
+Request Headers: "Content-Type: application/json"
+
+An authorization header is returned in the response header. The token in this header is used as
+a means of authorization for other routes. Aside being in the header, this token is also return as
+a json response
+```
+Request
+ curl -XPOST http://api.examio.feranmi.tech/api/student/signin -H "Content-Type: application/json"  -d '{"firstname": "Adewale", "lastname": "Adeniyi", "email": "Adeniyi@gmail.com", "password": "Adeniyi001"}'; echo ''
+ 
+ Response
+ Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 13.50.240.138:80...
+* TCP_NODELAY set
+* Connected to api.examio.feranmi.tech (13.50.240.138) port 80 (#0)
+> POST /api/student/signin HTTP/1.1
+> Host: api.examio.feranmi.tech
+> User-Agent: curl/7.68.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 103
+>
+* upload completely sent off: 103 out of 103 bytes
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Server: nginx/1.18.0 (Ubuntu)
+< Date: Wed, 19 Apr 2023 22:08:59 GMT
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 48
+< Connection: keep-alive
+< X-Powered-By: Express
+< Access-Control-Allow-Origin: *
+< Authorization: d22dfa44-0c10-4df0-a579-b65e5b28f097
+< ETag: W/"30-ffCSqVLKYFhlUzzHOkegZ3Jfjyc"
+<
+* Connection #0 to host api.examio.feranmi.tech left intact
+{"token":"d22dfa44-0c10-4df0-a579-b65e5b28f097"}
+```
+
+#### GET method: /student/take-exam
+
+Parameters: examId, page (5 questions per page)
+
+Request Header: {"Authorization": token, "Content-Type": "application/json" }
+
+```
+Request
+curl -XGET http://api.examio.feranmi.tech/api/student/take-exam -H "Authorization: d22dfa44-0c10-4df0-a579-b65e5b28f097" -H "Content-Type: application/json" -d  '{"examId": "06f3de30-bb2d-4218-8a3f-b72ad63f0505", "page": 1}'
+
+Response
+{"totalNoOfQuestions":11,"questions":[{"course":"chemistry","question":"What is the smallest unit of an element?","options":[{"text":"Atom","correct":true},{"text":"Molecule","correct":false},{"text":"Ion","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the atomic number of carbon?","options":[{"text":"6","correct":true},{"text":"8","correct":false},{"text":"14","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the name of the process by which a solid changes directly to a gas?","options":[{"text":"Sublimation","correct":true},{"text":"Evaporation","correct":false},{"text":"Condensation","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the chemical formula for ammonia?","options":[{"text":"NH3","correct":true},{"text":"N2","correct":false},{"text":"CO2","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"},{"course":"chemistry","question":"What is the name of the process by which a gas changes directly to a solid?","options":[{"text":"Deposition","correct":true},{"text":"Sublimation","correct":false},{"text":"Condensation","correct":false}],"examId":"06f3de30-bb2d-4218-8a3f-b72ad63f0505"}]}
+```
+
+
+
+
+
 
 
 
