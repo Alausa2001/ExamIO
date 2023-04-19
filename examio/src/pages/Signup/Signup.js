@@ -4,6 +4,7 @@ import line from "../Home/images/line_zero.svg";
 import sideimg from "../Home/images/signup_img.png";
 import { AiFillCaretLeft } from "react-icons/ai";
 import { useState } from "react";
+import { BsFillPatchExclamationFill } from "react-icons/bs";
 
 const Signup = () => {
   // const [showModal, setShowModal] = useState(false);
@@ -97,7 +98,11 @@ const Signup = () => {
         <h1 className="text-[1.1rem] text-center font-bold pb-5 border-b-4 border-buttonColor flex flex-col gap-[1.5rem]">
           Get Started With ExamIO for free
         </h1>
-        <form className="flex flex-col gap-[1.5rem]" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col gap-[1.5rem]"
+          onSubmit={handleSubmit}
+          method="POST"
+        >
           <div className="pt-10">
             <label htmlFor="name" className="font-medium inline-block">
               Your Name:
@@ -112,7 +117,10 @@ const Signup = () => {
             />
           </div>
           {error && name.length <= 0 ? (
-            <label>This field cannot be empty. Please input your name.</label>
+            <label className="text-buttonColor font-bold flex">
+              <BsFillPatchExclamationFill />
+              This field cannot be empty. Please input your name.
+            </label>
           ) : (
             ""
           )}
@@ -129,7 +137,9 @@ const Signup = () => {
             />
           </div>
           {error && email.length < 8 ? (
-            <label> Please input a valid email address.</label>
+            <label className="text-buttonColor font-bold flex">
+              <BsFillPatchExclamationFill /> Please input a valid email address.
+            </label>
           ) : (
             ""
           )}
@@ -146,7 +156,10 @@ const Signup = () => {
             />
           </div>
           {error && organisation.length <= 0 ? (
-            <label>Please input your company/organisation</label>
+            <label className="text-buttonColor font-bold flex">
+              <BsFillPatchExclamationFill />
+              Please input your company/organisation
+            </label>
           ) : (
             ""
           )}
@@ -180,7 +193,7 @@ const Signup = () => {
             />
           </div>
           {error && password < 5 ? (
-            <label>
+            <label className="text-buttonColor font-bold">
               Password must contain the following:
               <ul>
                 <li>A lowercase letter (a)</li>
@@ -205,7 +218,8 @@ const Signup = () => {
             />
           </div>
           {error && confirmpassword === password ? (
-            <label>
+            <label className="text-buttonColor font-bold flex">
+              <BsFillPatchExclamationFill />
               Please confirm that the password match the one you inputted above
             </label>
           ) : (

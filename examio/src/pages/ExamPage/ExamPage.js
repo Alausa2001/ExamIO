@@ -55,9 +55,11 @@ const ExamPage = () => {
         <h3 className="px-10 md:px-20 font-bold pb-5">
           Subject: English Language
         </h3>
-        <p className="text-center">Questions 1 to 5</p>
-        <div>
+        <p className="text-center text-sm font-semibold">Questions 1 to 5</p>
+        <div className="px-10 md:px-20">
           <h4>
+            {" "}
+            <span>1</span>
             In this question, choose the option that best completes the gap,
             Bolaji runs _____ as fast as I
           </h4>
