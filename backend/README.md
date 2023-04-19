@@ -133,14 +133,27 @@ Request Headers: {"Authorization": token, "Content-Type": "application/json" }
 
 ```
 Request
-curl -XPOST http://api.examio.feranmi.tech/api/examiner/history -H {"Authorization": token, "Content-Type": "application/json" }
+curl -XGET http://api.examio.feranmi.tech/api/examiner/history -H {"Authorization": token, "Content-Type": "application/json" }
 
 Response
 {'records': [{'examId': '750d2716-1e58-40fc-b8ed-e3d68ab59150', 'course': 'chemistry', 'createdAt': '2023-04-17T12:19:36.000Z'}, {'examId': 'a6a79775-c6d2-47c6-8369-d9e35229a81f', 'course': 'chemistry', 'createdAt': '2023-04-17T12:20:08.000Z'}, {'examId': 'c77a0c5b-8b1a-4d3d-ac64-d5af8ef93939', 'course': 'chemistry', 'createdAt': '2023-04-19T20:09:48.000Z'}, {'examId': '45124b08-1441-4551-a65f-742386509458', 'course': 'chemistry', 'createdAt': '2023-04-19T20:10:33.000Z'}]}
 ```
 
+GET method: /examiner/history/:examId
 
+Returns all the questions of a particular exam
 
+paramaters: None
+
+Request Header: {"Authorization": token, "Content-Type": "application/json" }
+
+```
+Request
+curl -XGET http://api.examio.feranmi.tech/api/examiner/get-questions/750d2716-1e58-40fc-b8ed-e3d68ab59150 -H {"Authorization": token, "Content-Type": "application/json"}
+
+Response
+{'questions': [{'_id': '643d3958fc2e9308622b73df', 'course': 'chemistry', 'question': 'Which element has the symbol "O"?', 'options': [{'text': 'Oxygen', 'correct': True}, {'text': 'Osmium', 'correct': False}, {'text': 'Oganesson', 'correct': False}], 'examId': '750d2716-1e58-40fc-b8ed-e3d68ab59150'}, {'_id': '643d3958fc2e9308622b73e0', 'course': 'chemistry', 'question': 'What is the chemical symbol for gold?', 'options': [{'text': 'Au', 'correct': True}, {'text': 'Ag', 'correct': False}, {'text': 'Cu', 'correct': False}], 'examId': '750d2716-1e58-40fc-b8ed-e3d68ab59150'}]}
+```
 
 
 
