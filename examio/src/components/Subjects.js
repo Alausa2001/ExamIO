@@ -145,7 +145,7 @@ const Subjects = () => {
       <div className="md:grid md:grid-cols-5 Md:gap-2">
         {Subjects.map((subject) => (
           <div className={subject.className}>
-            <input type={subject.type} checked={subject.checked} />
+            <input type={subject.type} />
             <h3>{subject.subject}</h3>
           </div>
         ))}

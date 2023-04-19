@@ -11,6 +11,18 @@ const Signup = () => {
     setShowModal(!showModal);
   };
 
+  const [name, setName] = useState("");
+  
+
+  const examURL = "http://api.examio.feranmi.tech/api/examiner/signup";
+
+  async function handleSubmit(e) => {
+    e.preventDefault();
+    if (
+
+    )
+  }
+
   return (
     <div className="flex flex-col md:flex-row py-10">
       {/* ----------- Left Side ------------------ */}

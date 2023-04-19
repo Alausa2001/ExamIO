@@ -7,15 +7,15 @@ const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <div className="bg-fixed bg-examiopurple flex flex-col md:flex-row px-10 md:px-20 py-5 z-50 md:fixed w-full static left-0 top-0 h-[100vh] md:h-[6rem]">
-      <a
-        href="/"
-        className="flex items-center gap-3 font-black text-lg text-lightColor md:pr-[22rem] pb-5 md:pb-0"
-      >
-        <img src={examio_icon} alt="examio-icon" />
-        ExamIO
-      </a>
-      <div className="md:flex flex-col md:flex-row items-center gap-14">
+    <div className="bg-fixed translate-y-[-100] bg-examiopurple flex flex-col md:flex-row px-10 md:px-20 py-5 md:fixed w-full left-0 top-0 md:h-[6rem] z-10">
+      <div>
+        <a
+          href="/"
+          className="flex items-center gap-3 font-black text-lg text-lightColor md:pr-[22rem] pb-5 md:pb-0"
+        >
+          <img src={examio_icon} alt="examio-icon" />
+          ExamIO
+        </a>
         <button
           onClick={() => setShowNav(!showNav)}
           className="text-lightColor md:hidden cursor-pointer absolute right-10 top-10"
@@ -28,6 +28,9 @@ const Navbar = () => {
             </button>
           )}
         </button>
+      </div>
+
+      <div className="md:flex flex-col md:flex-row items-center gap-14 absolute top-0 left-0 right-0 bg-examiopurple pl-10 pt-20 z-[-1]">
         <ul className="flex flex-col md:flex-row gap-12 mt-10 md:mt-0">
           <li className="text-lightColor font-semibold md:hover:text-buttonColor md:hover:font-extrabold">
             <NavLink to="/">Home</NavLink>
