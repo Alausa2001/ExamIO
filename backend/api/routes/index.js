@@ -9,7 +9,7 @@ const router = express.Router();
 
 /* get requests */
 router.get('/', (req, res) => {
-  res.status(200).json("Hello World");
+  res.status(200).json("Welcome to ExamIO");
 });
 router.get('/student/take-exam', auth, Examination.takeExam);
 router.get('/student/history', auth, History.studentRecords);
