@@ -12,7 +12,7 @@ def signin():
     """examiner signin"""
     header = {'Content-Type': 'application/json'}
     data = {'email': 'ogede@ymail', 'password': 'ogede001'}
-    res = requests.post('http://localhost:3000//api/examiner/signin', headers=header, json=data)
+    res = requests.post('http://localhost:3000/api/examiner/signin', headers=header, json=data)
     print(res.json())
     return res.headers.get('Authorization')
 
@@ -85,6 +85,6 @@ def createexam(token):
     print(res.json())
 
 if __name__ == "__main__":
-    # signup()
+    signup()
     token = signin()
     createexam(token)

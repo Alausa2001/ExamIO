@@ -5,14 +5,14 @@ def signup():
     """ student signup  """
     header = {'Content-Type': 'application/json'}
     data = {'firstname': 'Ogede', 'lastname': 'sina', 'email': 'sina@gmail', 'password': 'sina'}
-    res = requests.post('http://localhost:3000/examiner/signup', headers=header, json=data)
+    res = requests.post('http://localhost:3000/api/examiner/signup', headers=header, json=data)
     print(res.json())
 
 def signin():
     """student signin"""
     header = {'Content-Type': 'application/json'}
     data = {'email': 'sina@gmail', 'password': 'sina'}
-    res = requests.post('http://localhost:3000/examiner/signin', headers=header, json=data)
+    res = requests.post('http://localhost:3000/api/examiner/signin', headers=header, json=data)
     print(res.json())
     return res.headers.get('Authorization')
 
@@ -34,12 +34,12 @@ def createexam(token):
         }
         ]
     data = {"course": "chemistry", "questions": question}
-    res = requests.post('http://localhost:3000/examiner/create-exam', headers=header, json=data)
+    res = requests.post('http://localhost:3000/api/examiner/create-exam', headers=header, json=data)
     print(res.json())
 
 def exams_created(token):
     header = {"Authorization": token, "Content-Type": "application/json" }
-    res = requests.get('http://localhost:3000/examiner/history', headers=header)
+    res = requests.get('http://localhost:3000/api/examiner/history', headers=header)
     print(res.json())
     return res.json().get('records')
     #[0]
@@ -49,7 +49,7 @@ def exam_questions(records, token):
     header = {"Authorization": token, "Content-Type": "application/json" }
     for record in records:
         examId = record.get('examId')
-        res = requests.get(f'http://localhost:3000/examiner/get-questions/{examId}', headers=header)
+        res = requests.get(f'http://localhost:3000/api/examiner/get-questions/{examId}', headers=header)
         print(res.json())
 
 if __name__ == "__main__":
