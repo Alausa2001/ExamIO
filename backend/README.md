@@ -94,11 +94,10 @@ The token is gotten upon sign-in
 ```
 a_oluwaferanmi@Young-Sahaba:~/ExamIO/backend/api/pythonscripts$ cat ./createexam.py
 
+import requests
 def createexam(token):
 
     header = {"Authorization": token, "Content-Type": "application/json" }
-
-    #data = {"course": "bio", 'questions': [{'question': 'say my name', 'options': [{ 'a': 'feranmi', 'b': 'bola'}], 'correct': 'a']}
     question = [
         {
             'course': 'chemistry',
