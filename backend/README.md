@@ -25,8 +25,6 @@ Response
 ```
 
 if any parameter is missing in the request body, an error message with status 400 is returned
-
-{error : <parameter> is missing}
   
 ```
 Request
@@ -36,8 +34,6 @@ Response
 {"error":"password missing"}
 ```
 If the email is already used, an error message with status 400 is returned
-
- {error: user exists}
  
  ```
 Request
