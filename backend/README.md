@@ -18,7 +18,7 @@ parameters: firstname, lastname, email, password
 
 ```
 Request
-curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "Layi", "lastname": "Chidi", "email": "chidi@gmail.com", "password": "chidi001"}'; echo ''
+curl -XPOST http://api.examio.feranmi.tech/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "Layi", "lastname": "Chidi", "email": "chidi@gmail.com", "password": "chidi001"}'; echo ''
 
 Response
 {"examinerId":"d3fdff45-4123-4ac3-82d4-2ffc5aa0fe49","firstName":"Layi","lastName":"Chidi","email":"chidi@gmail.com","updatedAt":"2023-04-19T15:02:14.614Z","createdAt":"2023-04-19T15:02:14.614Z"}
@@ -37,7 +37,7 @@ If the email is already used, an error message with status 400 is returned
  
  ```
 Request
-curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "wale", "lastname": "ade", "email":"chidi@gmail.com", "password":"chidi001"}';
+curl -XPOST http://api.examio.feranmi.tech/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "wale", "lastname": "ade", "email":"chidi@gmail.com", "password":"chidi001"}';
   
 Response
 {"error":"user exists"}
@@ -53,7 +53,7 @@ a json response
 
 ```
 Request
- curl -XPOST http://localhost:3000/api/examiner/signin -H "Content-Type: application/json"  -d '{"email": "chidi@gmail.com", "password": "chidi001"}' -v; echo ''
+ curl -XPOST http://api.examio.feranmi.tech/api/examiner/signin -H "Content-Type: application/json"  -d '{"email": "chidi@gmail.com", "password": "chidi001"}' -v; echo ''
  
  Response
  *   Trying 127.0.0.1:3000...
@@ -85,9 +85,43 @@ Request
 ```
 
 #### POST method: /examiner/create-exam
-PARAMETERS: exam questions (see format [here](https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py)
+PARAMETERS: The exam questions are sent as a list of objects 
+(see format [here](https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py))
+
 REQUEST HEADERS: {'Authorization': token, Content-Type: 'application/json}
-the token are gotten upon signin
+
+The token is gotten upon sign-in
+```
+a_oluwaferanmi@Young-Sahaba:~/ExamIO/backend/api/pythonscripts$ cat ./createexam.py
+
+def createexam(token):
+
+    header = {"Authorization": token, "Content-Type": "application/json" }
+
+    #data = {"course": "bio", 'questions': [{'question': 'say my name', 'options': [{ 'a': 'feranmi', 'b': 'bola'}], 'correct': 'a']}
+    question = [
+        {
+            'course': 'chemistry',
+            'question': 'Which element has the symbol "O"?',
+            'options': [{'text': 'Oxygen', 'correct': True}, {'text': 'Osmium', 'correct': False}, {'text': 'Oganesson', 'correct': False}]
+        },
+        {
+            'course': 'chemistry',
+            'question': 'What is the chemical symbol for gold?',
+            'options': [{'text': 'Au', 'correct': True}, {'text': 'Ag', 'correct': False}, {'text': 'Cu', 'correct': False}]
+        }]
+        data = {"course": "bio", "questions": question}
+        res = requests.post('http://api.examio.feranmi.tech/api/examiner/create-exam', headers=header, json=data)
+        print(res.json())
+
+if __name__ == "__main__":
+    createexam(token)
+
+a_oluwaferanmi@Young-Sahaba:~/ExamIO/backend/api/pythonscripts$ ./createexam.py
+
+Response: The examId of the created exam is returned
+{'examId': '4b4b7225-1f9b-405f-84a5-3dae670fd0a6'}
+```
 
 
 
