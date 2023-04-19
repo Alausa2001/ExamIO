@@ -30,7 +30,7 @@ if any parameter is missing in the request body, an error message with status 40
   
 ```
 Request
-curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "Layi", "lastname": "Chidi", "email": "chidi1@gmail.com"}'; echo ''
+curl -XPOST http://api.examio.feranmi.tech/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "Layi", "lastname": "Chidi", "email": "chidi1@gmail.com"}'; echo ''
 
 Response
 {"error":"password missing"}
@@ -173,8 +173,24 @@ Response
 {"studentId":"6fdabf59-4563-4995-b2fa-2c93f2d0c41d","firstName":"Adewale","lastName":"Adeniyi","email":"Adeniyi@gmail.com","updatedAt":"2023-04-19T21:33:29.246Z","createdAt":"2023-04-19T21:33:29.246Z"}
 ```
 
+if any parameter is missing in the request body, an error message with status 400 is returned
+  
+```
+Request
+curl -XPOST http://api.examio.feranmi.tech/api/student/signup -H "Content-Type: application/json"  -d '{"firstname": "Adewale", "lastname": "Adeniyi", "email": "Adeniyi@gmail.com"}'; echo ''
 
-
+Response
+{"error":"password missing"}
+```
+If the email is already used, an error message with status 400 is returned
+ 
+ ```
+Request
+curl -XPOST http://api.examio.feranmi.tech/api/student/signup -H "Content-Type: application/json"  -d '{"firstname": "Quindon", "lastname": "Adeniyi", "email": "Adeniyi@gmail.com", "password": "Quindon001"}'; echo ''
+  
+Response
+{"error":"user exists"}
+```
 
 
 
