@@ -16,7 +16,7 @@ The routes are divided into two parts; the students' and the examiners' routes
 
 #### POST method:  /examiner/signup
 
-##### Parameters: firstname, lastname, email, password
+#### Parameters: firstname, lastname, email, password
 
 ```
 Request
@@ -47,7 +47,7 @@ Response
 
 #### POST method: /examiner/signin
 
-##### Parameters: email and password
+#### Parameters: email and password
 
 An authorization header is returned in the response header. The token in this header is used as
 a means of authorization for other routes. Aside being in the header, this token is also return as
@@ -87,10 +87,10 @@ Request
 ```
 
 #### POST method: /examiner/create-exam
-##### Parameters: The exam questions are sent as a list of objects 
+#### Parameters: The exam questions are sent as a list of objects 
 (see format [here](https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py))
 
-##### Request Headers: {'Authorization': token, Content-Type: 'application/json}
+#### Request Headers: {'Authorization': token, Content-Type: 'application/json}
 
 The token is gotten upon sign-in
 ```
@@ -128,9 +128,9 @@ This is the examId of the examination created
 
 Returns all the examId of exams created by an examiner
 
-##### Parameters: None
+#### Parameters: None
 
-##### Request Headers: {"Authorization": token, "Content-Type": "application/json" }
+#### Request Headers: {"Authorization": token, "Content-Type": "application/json" }
 
 ```
 Request
@@ -144,9 +144,9 @@ Response
 
 Returns all the questions of a particular exam
 
-##### Paramaters: None
+#### Paramaters: None
 
-##### Request Header: {"Authorization": token, "Content-Type": "application/json" }
+#### Request Header: {"Authorization": token, "Content-Type": "application/json" }
 
 ```
 Request
@@ -161,9 +161,9 @@ Response
 
 #### POST method: /student/signup
 
-##### Parameters: firstname, lastname, email, password
+#### Parameters: firstname, lastname, email, password
 
-##### Request Headers: "Content-Type: application/json"
+#### Request Headers: "Content-Type: application/json"
 
 ```
 Request
