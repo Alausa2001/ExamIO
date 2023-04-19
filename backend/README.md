@@ -7,17 +7,16 @@ http://api.examio.feranmi.tech/api
 #### NOTE
 Client-Server data transfer should be via the standard JSON format
 
-### ROUTES
+## ROUTES
 The routes are divided into two parts; the students' and the examiners' routes
 
-#### Examiner routes
+### Examiner routes
 
 POST method:  /examiner/signup
 parameters: firstname, lastname, email, password
 
 ```
 Request
-
 curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "Layi", "lastname": "Chidi", "email": "chidi@gmail.com", "password": "chidi001"}'; echo ''
 
 Response
