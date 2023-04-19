@@ -12,7 +12,7 @@ The routes are divided into two parts; the students' and the examiners' routes
 
 ### Examiner routes
 
-POST method:  /examiner/signup
+POST method:  /examiner/signup \n
 parameters: firstname, lastname, email, password
 
 ```
