@@ -31,7 +31,7 @@ class Examination {
     const exam = await mysqldb.createModel(ExaminerRecords, obj);
     const examId = exam.examId;
     const examQuestions = await mongod.createExam(questions, examId);
-    res.status(201).json(examQuestions);
+    res.status(201).json({ examId });
   }
 
   static async takeExam(req, res) {
