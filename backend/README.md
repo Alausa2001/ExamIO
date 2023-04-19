@@ -85,7 +85,7 @@ Request
 ```
 
 #### POST method: /examiner/create-exam
-PARAMETERS: exam questions (see format (here)[https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py]
+PARAMETERS: exam questions (see format [here](https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py)
 REQUEST HEADERS: {'Authorization': token, Content-Type: 'application/json}
 the token are gotten upon signin
 
