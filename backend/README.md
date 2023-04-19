@@ -71,7 +71,7 @@ Request
 < HTTP/1.1 200 OK
 < X-Powered-By: Express
 < Access-Control-Allow-Origin: *
-< Authorization: 73e295b3-cfeb-486f-ad0d-28eaa68b0161         the token header
+< Authorization: 73e295b3-cfeb-486f-ad0d-28eaa68b0161         token returned in authorization header
 < Content-Type: application/json; charset=utf-8
 < Content-Length: 48
 < ETag: W/"30-UHZ/2UjEJOdjbKzdsslhn2laROQ"
@@ -81,9 +81,13 @@ Request
 <
 * Connection #0 to host localhost left intact
 
-{"token":"73e295b3-cfeb-486f-ad0d-28eaa68b0161"}         token return as json
+{"token":"73e295b3-cfeb-486f-ad0d-28eaa68b0161"}              token returned as json
 ```
 
+#### POST method: /examiner/create-exam
+PARAMETERS: exam questions (see format [here](https://github.com/Alausa2001/ExamIO/blob/Alausa2001-patch-1/backend/api/pythonscripts/createexam.py)
+REQUEST HEADERS: {'Authorization': token, Content-Type: 'application/json}
+the token are gotten upon signin
 
 
 
