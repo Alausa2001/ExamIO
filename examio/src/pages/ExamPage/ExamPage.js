@@ -3,6 +3,7 @@ import HomeNav from "../../components/HomeNav";
 import ExamTimer from "../../components/ExamTimer";
 import { useState, useEffect } from "react";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import { BsFillSendFill } from "react-icons/bs";
 
 const ExamPage = () => {
   const [timerHours, setTimerHours] = useState();
@@ -51,8 +52,10 @@ const ExamPage = () => {
         timerSeconds={timerSeconds}
       />
       <div className="bg-lightColor">
-        <h3>Subject: English Language</h3>
-        <p>Questions 1 to 5</p>
+        <h3 className="px-10 md:px-20 font-bold pb-5">
+          Subject: English Language
+        </h3>
+        <p className="text-center">Questions 1 to 5</p>
         <div>
           <h4>
             In this question, choose the option that best completes the gap,
@@ -161,7 +164,7 @@ const ExamPage = () => {
           Previous
         </div>
         <div>
-          <AiFillCaretLeft />
+          <BsFillSendFill />
           Submit
         </div>
         <div>
