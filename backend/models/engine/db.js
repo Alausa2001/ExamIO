@@ -11,6 +11,7 @@ const sequelize = new Sequelize(database, user, pwd, {
   port,
   host: 'localhost',
   dialect: 'mysql',
+  logging: false,
 });
 
 class MysqlClient {
