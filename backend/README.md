@@ -40,11 +40,9 @@ If the email is already used, an error message with status 400 is returned
  {error: user exists}
  
  ```
-  Request
- curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "wale", "lastname": "ade", "
-email": "chidi@gmail.com", "password": "chidi001"}'; echo ''
+Request
+curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: application/json"  -d '{"firstname": "wale", "lastname": "ade", "email":"chidi@gmail.com", "password":"chidi001"}';
   
-  Response
-  
-  {"error":"user exists"}
- ```
+Response
+{"error":"user exists"}
+```
