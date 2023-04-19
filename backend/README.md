@@ -5,7 +5,9 @@ Documetation of the API for a computer-based-test application
 http://api.examio.feranmi.tech/api
 
 #### NOTE
-Client-Server data transfer should be via the standard JSON format
+1. Client-Server data transfer (parameters as used in this documentation) should be via the standard JSON format
+2. For routes that require the Authorization header, if the token is incorrect or has expired, a 401 unauthorized error response is received. 
+
 
 ## ROUTES
 The routes are divided into two parts; the students' and the examiners' routes
@@ -138,7 +140,7 @@ Response
 {'records': [{'examId': '750d2716-1e58-40fc-b8ed-e3d68ab59150', 'course': 'chemistry', 'createdAt': '2023-04-17T12:19:36.000Z'}, {'examId': 'a6a79775-c6d2-47c6-8369-d9e35229a81f', 'course': 'chemistry', 'createdAt': '2023-04-17T12:20:08.000Z'}, {'examId': 'c77a0c5b-8b1a-4d3d-ac64-d5af8ef93939', 'course': 'chemistry', 'createdAt': '2023-04-19T20:09:48.000Z'}, {'examId': '45124b08-1441-4551-a65f-742386509458', 'course': 'chemistry', 'createdAt': '2023-04-19T20:10:33.000Z'}]}
 ```
 
-GET method: /examiner/history/:examId
+#### GET method: /examiner/history/:examId
 
 Returns all the questions of a particular exam
 
@@ -155,7 +157,21 @@ Response
 ```
 
 
+## Student Routes
 
+#### POST method: /student/signup
+
+Parameters: firstname, lastname, email, password
+
+Request Headers: "Content-Type: application/json"
+
+```
+Request
+curl -XPOST http://api.examio.feranmi.tech/api/student/signup -H "Content-Type: application/json"  -d '{"firstname": "Adewale", "lastname": "Adeniyi", "email": "Adeniyi@gmail.com", "password": "Adeniyi001"}'; echo ''
+
+Response
+{"studentId":"6fdabf59-4563-4995-b2fa-2c93f2d0c41d","firstName":"Adewale","lastName":"Adeniyi","email":"Adeniyi@gmail.com","updatedAt":"2023-04-19T21:33:29.246Z","createdAt":"2023-04-19T21:33:29.246Z"}
+```
 
 
 
