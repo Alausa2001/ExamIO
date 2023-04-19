@@ -42,3 +42,53 @@ curl -XPOST http://localhost:3000/api/examiner/signup -H "Content-Type: applicat
 Response
 {"error":"user exists"}
 ```
+
+#### POST method: /examiner/signin
+
+parameters: email and password
+
+An authorization header is returned in the response header. The token in this header is used as
+a means of authorization for other routes. Aside being in the header, this token is also return as
+a json response
+
+```
+Request
+ curl -XPOST http://localhost:3000/api/examiner/signin -H "Content-Type: application/json"  -d '{"email": "chidi@gmail.com", "password": "chidi001"}' -v; echo ''
+ 
+ Response
+ *   Trying 127.0.0.1:3000...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 3000 (#0)
+> POST /api/examiner/signin HTTP/1.1
+> Host: localhost:3000
+> User-Agent: curl/7.68.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 52
+>
+* upload completely sent off: 52 out of 52 bytes
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Access-Control-Allow-Origin: *
+< Authorization: 73e295b3-cfeb-486f-ad0d-28eaa68b0161         the token header
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 48
+< ETag: W/"30-UHZ/2UjEJOdjbKzdsslhn2laROQ"
+< Date: Wed, 19 Apr 2023 17:24:20 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+<
+* Connection #0 to host localhost left intact
+
+{"token":"73e295b3-cfeb-486f-ad0d-28eaa68b0161"}         token return as json
+```
+
+
+
+
+
+
+
+
+
