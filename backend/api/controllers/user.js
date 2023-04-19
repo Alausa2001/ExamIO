@@ -12,7 +12,7 @@ class User {
     const {
       firstname, lastname, email, password,
     } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const queryObj = { email };
     const student = await mysqldb.userExists(Student, queryObj);
     if (student) {
