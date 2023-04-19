@@ -51,125 +51,164 @@ const ExamPage = () => {
         timerMinutes={timerMinutes}
         timerSeconds={timerSeconds}
       />
-      <div className="bg-lightColor">
+      <div className="bg-lightColor pb-[5rem]">
         <h3 className="px-10 md:px-20 font-bold pb-5">
           Subject: English Language
         </h3>
-        <p className="text-center text-sm font-semibold">Questions 1 to 5</p>
-        <div className="px-10 md:px-20">
-          <h4>
+        <p className="mx-auto text-center rounded-lg text-sm font-semibold mb-10 px-3 py-1 bg-examiopurple border w-[30%] text-lightColor">
+          Questions 1 to 5
+        </p>
+        <div className="px-10 md:px-20 text-center">
+          <h4 className="text-base">
             {" "}
-            <span>1</span>
+            <span className="mr-3 rounded-full bg-buttonColor px-1 text-lightColor text-sm font-extrabold">
+              1
+            </span>
             In this question, choose the option that best completes the gap,
             Bolaji runs _____ as fast as I
           </h4>
-          <span>(A)</span> <input type="radio" />
-          <label>indeed</label>
-          <span>(B)</span>
-          <input type="radio" />
-          <label>pretty</label>
-          <span>(C)</span>
-          <input type="radio" />
-          <label>much</label>
-          <span>(D)</span>
-          <input type="radio" />
-          <label>just</label>
+          <div className="py-3 flex items-center gap-1 ml-10 font-bold pb-[2.5rem] justify-center">
+            <span>(A)</span>
+            <input type="radio" />
+            <label>indeed</label>
+
+            <span className="ml-2">(B)</span>
+            <input type="radio" />
+            <label>pretty</label>
+
+            <span className="ml-2">(C)</span>
+            <input type="radio" />
+            <label>much</label>
+
+            <span className="ml-2">(D)</span>
+            <input type="radio" />
+            <label>just</label>
+          </div>
         </div>
-      </div>
-      <div className="bg-lightColor">
-        <h3>Subject: English Language</h3>
-        <p>Questions 1 to 5</p>
-        <div>
-          <h4>
+
+        <div className="px-10 md:px-20 text-center">
+          <h4 className="text-base">
+            {" "}
+            <span className="mr-3 rounded-full bg-buttonColor px-1 text-lightColor text-sm font-extrabold">
+              2
+            </span>
             In this question, choose the option that best completes the gap,
             Bolaji runs _____ as fast as I
           </h4>
-          <span>(A)</span> <input type="radio" />
-          <label>indeed</label>
-          <span>(B)</span>
-          <input type="radio" />
-          <label>pretty</label>
-          <span>(C)</span>
-          <input type="radio" />
-          <label>much</label>
-          <span>(D)</span>
-          <input type="radio" />
-          <label>just</label>
+          <div className="py-3 flex items-center gap-1 ml-10 font-bold pb-[2.5rem] justify-center">
+            <span>(A)</span>
+            <input type="radio" />
+            <label>indeed</label>
+
+            <span className="ml-2">(B)</span>
+            <input type="radio" />
+            <label>pretty</label>
+
+            <span className="ml-2">(C)</span>
+            <input type="radio" />
+            <label>much</label>
+
+            <span className="ml-2">(D)</span>
+            <input type="radio" />
+            <label>just</label>
+          </div>
         </div>
-      </div>
-      <div className="bg-lightColor">
-        <h3>Subject: English Language</h3>
-        <p>Questions 1 to 5</p>
-        <div>
-          <h4>
+
+        <div className="px-10 md:px-20 text-center">
+          <h4 className="text-base">
+            {" "}
+            <span className="mr-3 rounded-full bg-buttonColor px-1 text-lightColor text-sm font-extrabold">
+              3
+            </span>
             In this question, choose the option that best completes the gap,
             Bolaji runs _____ as fast as I
           </h4>
-          <span>(A)</span> <input type="radio" />
-          <label>indeed</label>
-          <span>(B)</span>
-          <input type="radio" />
-          <label>pretty</label>
-          <span>(C)</span>
-          <input type="radio" />
-          <label>much</label>
-          <span>(D)</span>
-          <input type="radio" />
-          <label>just</label>
+          <div className="py-3 flex items-center gap-1 ml-10 font-bold pb-[2.5rem] justify-center">
+            <span>(A)</span>
+            <input type="radio" />
+            <label>indeed</label>
+
+            <span className="ml-2">(B)</span>
+            <input type="radio" />
+            <label>pretty</label>
+
+            <span className="ml-2">(C)</span>
+            <input type="radio" />
+            <label>much</label>
+
+            <span className="ml-2">(D)</span>
+            <input type="radio" />
+            <label>just</label>
+          </div>
         </div>
-      </div>
-      <div className="bg-lightColor">
-        <h3>Subject: English Language</h3>
-        <p>Questions 1 to 5</p>
-        <div>
-          <h4>
+
+        <div className="px-10 md:px-20 text-center">
+          <h4 className="text-base">
+            {" "}
+            <span className="mr-3 rounded-full bg-buttonColor px-1 text-lightColor text-sm font-extrabold">
+              4
+            </span>
             In this question, choose the option that best completes the gap,
             Bolaji runs _____ as fast as I
           </h4>
-          <span>(A)</span> <input type="radio" />
-          <label>indeed</label>
-          <span>(B)</span>
-          <input type="radio" />
-          <label>pretty</label>
-          <span>(C)</span>
-          <input type="radio" />
-          <label>much</label>
-          <span>(D)</span>
-          <input type="radio" />
-          <label>just</label>
+          <div className="py-3 flex items-center gap-1 ml-10 font-bold pb-[2.5rem] justify-center">
+            <span>(A)</span>
+            <input type="radio" />
+            <label>indeed</label>
+
+            <span className="ml-2">(B)</span>
+            <input type="radio" />
+            <label>pretty</label>
+
+            <span className="ml-2">(C)</span>
+            <input type="radio" />
+            <label>much</label>
+
+            <span className="ml-2">(D)</span>
+            <input type="radio" />
+            <label>just</label>
+          </div>
         </div>
-      </div>
-      <div className="bg-lightColor">
-        <h3>Subject: English Language</h3>
-        <p>Questions 1 to 5</p>
-        <div>
-          <h4>
+
+        <div className="px-10 md:px-20 text-center">
+          <h4 className="text-base">
+            {" "}
+            <span className="mr-3 rounded-full bg-buttonColor px-1 text-lightColor text-sm font-extrabold">
+              5
+            </span>
             In this question, choose the option that best completes the gap,
             Bolaji runs _____ as fast as I
           </h4>
-          <span>(A)</span> <input type="radio" />
-          <label>indeed</label>
-          <span>(B)</span>
-          <input type="radio" />
-          <label>pretty</label>
-          <span>(C)</span>
-          <input type="radio" />
-          <label>much</label>
-          <span>(D)</span>
-          <input type="radio" />
-          <label>just</label>
+          <div className="py-3 flex items-center gap-1 ml-10 font-bold pb-[2.5rem] justify-center">
+            <span>(A)</span>
+            <input type="radio" />
+            <label>indeed</label>
+
+            <span className="ml-2">(B)</span>
+            <input type="radio" />
+            <label>pretty</label>
+
+            <span className="ml-2">(C)</span>
+            <input type="radio" />
+            <label>much</label>
+
+            <span className="ml-2">(D)</span>
+            <input type="radio" />
+            <label>just</label>
+          </div>
         </div>
       </div>
-      <div>
-        <div>
+
+      <div className="flex flex-row px-10 md:px-20 py-5 justify-between text-lightColor">
+        <div className="flex items-center gap-1 cursor-pointer md:hover:bg-buttonColor md:hover:px-5">
           <AiFillCaretLeft />
           Previous
         </div>
-        <div>
+        <div className="flex items-center gap-1 cursor-pointer md:hover:bg-buttonColor md:hover:px-5">
           <BsFillSendFill />
           Submit
         </div>
-        <div>
+        <div className="flex items-center gap-1 cursor-pointer md:hover:bg-buttonColor md:hover:px-5">
           <AiFillCaretRight />
           Next
         </div>

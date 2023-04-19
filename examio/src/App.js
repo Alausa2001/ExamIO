@@ -8,6 +8,7 @@ import Demotest from "./pages/Demotest/Demotest";
 import WriteExam from "./pages/WriteExam/WriteExam";
 import ExamHistory from "./pages/ExamHistory/ExamHistory";
 import ExamPage from "./pages/ExamPage/ExamPage";
+import Demo from "./pages/Demo/Demo";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/write-exam" element={<WriteExam />} />
         <Route path="/history" element={<ExamHistory />} />
         <Route path="/exam" element={<ExamPage />} />
+        <Route path="/demotest" element={<Demo />} />
       </Routes>
     </BrowserRouter>
   );
