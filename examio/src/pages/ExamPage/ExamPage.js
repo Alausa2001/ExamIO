@@ -13,7 +13,7 @@ const ExamPage = () => {
   let interval;
 
   const startTimer = () => {
-    const countTownTime = new Date("April 20, 2023 ").getTime();
+    const countTownTime = new Date("April 25, 2023 ").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
