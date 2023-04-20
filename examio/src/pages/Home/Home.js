@@ -21,13 +21,13 @@ const Home = () => {
 
       <div className="md:h-[100vh] flex flex-col items-center justify-between pl-[5rem] pr-[2.5rem] py-10 md:flex-row">
         <div>
-          <h1 className="w-[40rem] text-lightColor text-[3.2rem] font-extrabold italic">
+          <h1 className="w-[30rem] md:w-[40rem] text-lightColor text-[2.4rem] md:text-[3.2rem] font-extrabold italic">
             Accelerate your learning with Computer Based Testing...
           </h1>
           <img
             src={line}
             alt=""
-            className="relative bottom-[10.5rem] right-[1.2rem]"
+            className="relative bottom-[8rem] md:bottom-[10.5rem] right-[0.9rem] md:right-[1.2rem]"
           />
           <p className="text-lightColor text-[1.5rem] mb-10">
             Secure, Reliable and User-Friendly
@@ -110,13 +110,13 @@ const Home = () => {
             <img src={sectionsectionimg} alt="" />
           </div>
           <div>
-            <h1 className="w-[40rem] text-lightColor text-[3.2rem] font-extrabold italic">
+            <h1 className="w-[30rem] md:w-[40rem] text-lightColor text-[2.4rem] md:text-[3.2rem] font-extrabold italic">
               Transforming the Test taking experience with ease.
             </h1>
             <img
               src={linetwo}
               alt=""
-              className="relative bottom-[10.5rem] right-[1.2rem]"
+              className="relative bottom-[8rem] md:bottom-[10.5rem] right-[0.7rem] md:right-[1.2rem]"
             />
             <p className="text-lightColor text-[1.5rem] mb-10">
               Lörem ipsum spermatvätt tratösm.

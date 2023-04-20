@@ -199,10 +199,16 @@ const Navbar = () => {
                   >
                     {/* add whatever you wanna add here. Eg links, images, etc */}
                     <li className="font-semibold transition duration-500 w-full">
-                      Log In
+                      Conduct Exams/Quiz
                     </li>
                     <li className="font-semibold transition duration-500 w-full">
-                      Log In
+                      Schedule Exams
+                    </li>
+                    <li className="font-semibold transition duration-500 w-full">
+                      Write Exams
+                    </li>
+                    <li className="font-semibold transition duration-500 w-full">
+                      Exam Analysis
                     </li>
                   </ul>
                 </div>
