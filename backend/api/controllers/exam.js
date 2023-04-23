@@ -65,6 +65,7 @@ class Examination {
 
     if (noOfQues <= 0) {
       res.status(404).json({ error: 'exam doesnt exist' });
+      return;
     }
 
     if (!course) {
@@ -89,6 +90,23 @@ class Examination {
     const studentRecord = { course, examId, duration, score, studentId };
     const newRecord = await mysqldb.createModel(StudentRecords, studentRecord);
     res.status(201).json({ 'status': 'submission successful', newRecord });
+  }
+
+  static async results(req, res) {
+    const { examId } = req.body;
+
+    if (!examId) {
+      res.status(400).json({ error: 'exam not specified' });
+      return;
+    }
+    const results = await mysqldb.results(
+      Student, StudentRecords, ['firstname', 'lastname'], ['score']);
+
+    if (!results) {
+      res.status(400).json({ error: 'record not found' });
+      return;
+    }
+    res.json(results)
   }
 }
 

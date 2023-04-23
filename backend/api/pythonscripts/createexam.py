@@ -5,14 +5,14 @@ def signup():
     """ examiner signup  """
     header = {'Content-Type': 'application/json'}
     data = {'firstname': 'eniola', 'lastname': 'ogede', 'email': 'ogede@ymail', 'password': 'ogede001'}
-    res = requests.post('http://localhost:3000/api/examiner/signup', headers=header, json=data)
+    res = requests.post('http://api.examio.feranmi.tech/api/examiner/signup', headers=header, json=data)
     print(res.json())
 
 def signin():
     """examiner signin"""
     header = {'Content-Type': 'application/json'}
     data = {'email': 'ogede@ymail', 'password': 'ogede001'}
-    res = requests.post('http://localhost:3000/api/examiner/signin', headers=header, json=data)
+    res = requests.post('http://api.examio.feranmi.tech/api/examiner/signin', headers=header, json=data)
     print(res.json())
     return res.headers.get('Authorization')
 
@@ -81,7 +81,7 @@ def createexam(token):
 
     data = {"course": "bio", "questions": question}
 
-    res = requests.post('http://localhost:3000/api/examiner/create-exam', headers=header, json=data)
+    res = requests.post('http://api.examio.feranmi.tech/api/examiner/create-exam', headers=header, json=data)
     print(res.json())
 
 if __name__ == "__main__":

@@ -48,7 +48,7 @@ class MysqlClient {
     return newRecord.dataValues;
   }
 
-  async selectAll(model, field = null) {
+  async selectAll(model, field = null, match = null) {
     /* selectAll returns all rows in a table
      * 
      * if field is null: return all the columns ( SELECT * ...)
@@ -84,6 +84,8 @@ class MysqlClient {
     return obj;
   }
 
+  /* need to do some revamping */
+
   async userExists(table, search) {
     const user = await table.findOne({ where: search });
     if (user === null) {
@@ -116,6 +118,19 @@ class MysqlClient {
     }
     const allRecords = await table.findAll({ where: match, raw: true });
     return allRecords;
+  }
+
+  async results(primary, foreign, priField, forField, match) {
+    const results = await primary.findAll({
+      attributes: priField,
+      include: [{
+        model: foreign,
+        attributes: forField,
+        where: { examId: '750d2716-1e58-40fc-b8ed-e3d68ab59150' },
+      }],
+    });
+    console.log('done');
+    return results;
   }
 }
 

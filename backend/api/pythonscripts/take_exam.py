@@ -20,7 +20,7 @@ def takeexam(token):
     """ take exam """
 
     header = {'Authorization': token, 'Content-Type': 'application/json'}
-    data = {'examId': '1f05ab02-50b4-408a-b413-f305dbd143b6', 'page': 2}
+    data = {'examId': '06f3de30-bb2d-4218-8a3f-b72ad63f0505', 'page': 1}
     res = requests.get('http://api.examio.feranmi.tech/api/student/take-exam', headers=header, json=data)
     print(res.json())
 
