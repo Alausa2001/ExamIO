@@ -1,9 +1,51 @@
+import { useState } from "react";
 import examio from "../Home/images/examio_icon.svg";
 import line from "../Home/images/line_zero.svg";
 import sideimg from "../Home/images/signup_img.png";
 import { AiFillCaretLeft } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (error === 404) {
+      setError(true);
+    }
+
+    const studentLoginURL = "http://api.examio.feranmi.tech/api/student/signin";
+    // const examinerLoginURL = "http://api.examio.feranmi.tech/api/examiner/signin";
+
+    const response = await fetch(studentLoginURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+
+    if (response.status === 400) {
+      console.log("Email or password incorrect");
+      alert("Email or password incorrect");
+    } else {
+      const data = await response.json();
+      props.saveDetails(data);
+
+      localStorage.setItem("examiner_ID", data.examinerId);
+
+      navigate("/homepage");
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row py-5">
       {/* ----------- Left Side ------------------ */}
@@ -23,7 +65,7 @@ const Login = () => {
           <img
             src={line}
             alt="start-out underline"
-            className="relative top-[6rem] right-5"
+            className="relative top-[5.3rem] right-5"
           />
           <h1 className="text-[3rem] text-lightColor font-extrabold italic pb-[1rem] pt-[1rem] leading-[4rem]">
             Start Out with our user-friendly Testing platform for free...
@@ -40,10 +82,15 @@ const Login = () => {
         <h1 className="text-[1.1rem] text-center font-bold pb-5 mb-10 border-b-4 border-buttonColor flex flex-col gap-[1.5rem]">
           Log In to your ExamIO account
         </h1>
-        <form method="get" className="flex flex-col gap-[1.5rem]">
+        <form
+          method="post"
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-[1.5rem]"
+        >
           <div>
             <label htmlFor="email">Email:</label>
             <input
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
               id="email"
@@ -54,7 +101,13 @@ const Login = () => {
           </div>
           <div>
             <label htmlFor="password">Password:</label>
-            <input type="password" name="password" id="password" required />
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              name="password"
+              id="password"
+              required
+            />
           </div>
           <button
             type="submit"

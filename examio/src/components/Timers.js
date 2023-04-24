@@ -2,9 +2,9 @@ import React from "react";
 
 const Timers = () => {
   const timer = {
-    hours: 2,
-    minutes: 60,
-    seconds: 60,
+    hours: 1,
+    minutes: 30,
+    seconds: 30,
   };
 
   return (

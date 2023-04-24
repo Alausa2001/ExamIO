@@ -143,12 +143,11 @@ const Subjects = () => {
         Please Select your required Subject(s)
       </h2>
       <div className="md:grid md:grid-cols-5 Md:gap-2">
-        {Subjects.map((subject) => (
-          <div className={subject.className}>
-            <input type={subject.type} />
-            <h3>{subject.subject}</h3>
-          </div>
-        ))}
+        <select>
+          {Subjects.map((subject) => (
+            <option>{subject.subject}</option>
+          ))}
+        </select>
       </div>
     </div>
   );

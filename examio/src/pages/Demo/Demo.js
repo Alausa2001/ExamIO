@@ -1,18 +1,29 @@
 import React from "react";
 import HomeNav from "../../components/HomeNav";
-import ExamTimer from "../../components/ExamTimer";
+// import ExamTimer from "../../components/ExamTimer";
+import Timing from "../../components/Timing";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { BsFillSendFill } from "react-icons/bs";
 
-const Demo = (props) => {
+const Demo = () => {
+  const studentExam = "http://api.examio.feranmi.tech/api/student/take-exam";
+
+  const response = fetch(studentExam, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
   return (
     <div>
       <HomeNav />
-      <ExamTimer
+      <Timing />
+      {/* <ExamTimer
         timerHours={props.timerHours}
         timerMinutes={props.timerMinutes}
         timerSeconds={props.timerSeconds}
-      />
+      /> */}
       <div className="bg-lightColor pb-[5rem]">
         <h3 className="px-10 md:px-20 font-bold pb-5">
           Subject: English Language

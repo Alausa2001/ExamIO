@@ -7,10 +7,10 @@ import { useState } from "react";
 import { BsFillPatchExclamationFill } from "react-icons/bs";
 
 const Signup = () => {
-  // const [showModal, setShowModal] = useState(false);
-  // const startModal = () => {
-  //   setShowModal(!showModal);
-  // };
+  const [showModal, setShowModal] = useState(false);
+  const startModal = () => {
+    setShowModal(!showModal);
+  };
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,12 +18,21 @@ const Signup = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [organisation, setOrganisation] = useState("");
   const [occupation, setOccupation] = useState("");
-  const [purpose, setPurpose] = useState("");
   const [error, setError] = useState(false);
 
   const [firstname, lastname] = name.split(" ");
 
-  const examURL = "http://api.examio.feranmi.tech/api/examiner/signup";
+  const [selectedOption, setSelectedOption] = useState("option1");
+
+  function handleChange(e) {
+    e.preventDefault();
+
+    setSelectedOption(e.target.value);
+    console.log(selectedOption);
+  }
+
+  const examinerURL = "http://api.examio.feranmi.tech/api/examiner/signup";
+  const studentURL = "http://api.examio.feranmi.tech/api/student/signup";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -32,13 +41,22 @@ const Signup = () => {
       email.length === 0 ||
       password.length < 8 ||
       organisation.length === 0 ||
-      occupation.length === 0 ||
-      purpose === 0
+      occupation.length === 0
     ) {
       setError(true);
+    } else {
+      setShowModal(true);
     }
 
-    const response = await fetch(examURL, {
+    let endPointURL;
+
+    if (selectedOption === "option1") {
+      endPointURL = studentURL;
+    } else {
+      endPointURL = examinerURL;
+    }
+
+    const response = await fetch(endPointURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,13 +68,14 @@ const Signup = () => {
         password: password,
         organisation: organisation,
         occupation: occupation,
-        purpose: purpose,
       }),
     });
 
     if (response.status > 300) {
-      console.log("Email or password incorrect");
+      console.log("Email or password already exists");
+      alert("Email or password already exists.");
     } else {
+      startModal();
       const data = await response.json();
       console.log(data);
     }
@@ -101,7 +120,7 @@ const Signup = () => {
         <form
           className="flex flex-col gap-[1.5rem]"
           onSubmit={handleSubmit}
-          method="POST"
+          method=""
         >
           <div className="pt-10">
             <label htmlFor="name" className="font-medium inline-block">
@@ -167,6 +186,7 @@ const Signup = () => {
           <div>
             <label htmlFor="Occupation">Occupation</label>
             <input
+              onChange={(e) => setOccupation(e.target.value)}
               type="text"
               id="occupation"
               name="occupation"
@@ -176,9 +196,9 @@ const Signup = () => {
 
           <div>
             <label htmlFor="purpose">What would you like to do?</label>
-            <select>
-              <option>Take a test/exam on the app</option>
-              <option>Conduct an exam on the app</option>
+            <select onChange={handleChange} value={selectedOption}>
+              <option value="option1">Take a test/exam on the app</option>
+              <option value="option2">Conduct an exam on the app</option>
             </select>
           </div>
 
@@ -217,7 +237,7 @@ const Signup = () => {
               required
             />
           </div>
-          {error && confirmpassword === password ? (
+          {error && confirmpassword !== password ? (
             <label className="text-buttonColor font-bold flex">
               <BsFillPatchExclamationFill />
               Please confirm that the password match the one you inputted above
@@ -227,15 +247,23 @@ const Signup = () => {
           )}
           <button
             typeof="submit"
-            // onClick={startModal}
-            type="submit"
+            disabled={
+              name &&
+              email &&
+              organisation &&
+              occupation &&
+              password &&
+              confirmpassword
+                ? false
+                : true
+            }
             className="px-[1.5rem] py-[0.8rem] bg-buttonColor text-lightColor rounded-[0.5rem] text-lg font-bold md:hover:bg-hoverColor w-[70%] mx-auto"
           >
             Get Started for Free
           </button>
         </form>
       </div>
-      {/* <Modal open={showModal} onClose={startModal} /> */}
+      <Modal open={showModal} onClose={startModal} />
     </div>
   );
 };
