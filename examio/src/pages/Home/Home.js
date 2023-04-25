@@ -51,7 +51,7 @@ const Home = () => {
       <div className="flex flex-col items-center md:flex-row md:items-center px-[8rem] py-10 gap-10 bg-lightColor md:h-[40rem]">
         {/* ------------------ Left Section -------------- */}
 
-        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:transition md:ease-out-in md:hover:z-[-1] md:delay-150 md:hover:-translate-y-1 md:hover:scale-110 md:hover:bg-buttonColor md:hover:text-lightColor md:duration-300">
+        <div className="flex flex-col items-center text-center gap-6  p-[2rem] border border-buttonColor rounded-md shadow-lg shadow-buttonColor-500/80 md:transition md:ease-out-in md:delay-150 md:hover:-translate-y-1 md:hover:scale-110 md:hover:bg-buttonColor md:hover:text-lightColor md:duration-300">
           <img src={leftimg} alt="" />
           <h2 className="text-[30px] font-bold leading-none">
             Experience smarter testing
