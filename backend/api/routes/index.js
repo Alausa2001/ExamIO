@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.status(200).json("Welcome to ExamIO");
 });
-router.get('/student/take-exam', auth, Examination.takeExam);
+router.get('/student/take-exam', Examination.takeExam);
 router.get('/student/history', auth, History.studentRecords);
 router.get('/student/history/:examId', auth, History.studentRecord);
 router.get('/examiner/history', auth, History.examinerRecords)

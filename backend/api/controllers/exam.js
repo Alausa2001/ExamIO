@@ -35,7 +35,7 @@ class Examination {
   }
 
   static async takeExam(req, res) {
-    const { examId, page = 0 } = req.body;
+    const { examId, page = 0 } = req.query;
     /* To do: an exam should be taken once only */
 
     if (!examId) {

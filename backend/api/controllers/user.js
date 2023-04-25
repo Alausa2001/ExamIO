@@ -73,7 +73,10 @@ class User {
         const student = await mysqldb.getUser(Student, { email, password: sha1(password) });
         const token = v4();
         await redisClient.set(`auth_${token}`, `${student.studentId}`, 86400);
-        res.status(200).header('Authorization', token).json({ token });
+	delete student.password;
+	delete student.createdAt;
+	delete student.updatedAt;
+        res.status(200).header('Authorization', token).json({ token, student });
       } catch (err) {
         res.status(500).json({ error: `internal error ${err}` });
       }
