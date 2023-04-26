@@ -10,14 +10,40 @@ import Modal3 from "../../components/Modal3";
 const Demo = (props) => {
   let [page, setPage] = useState(0);
   let [questionNums, setQuestionNums] = useState([1, 2, 3, 4, 5]);
-  // let [userAnswers, setUserAnswers] = useState([]);
+  let [userAnswers, setUserAnswers] = useState([]);
   // const [correctAnswers, setCorrectAnswers] = useState([]);
-  // let [totalScore, setTotalScore] = useState(0);
+  let [totalScore, setTotalScore] = useState(0);
+  let [totalQuestions, setTotalQuestions] = useState(0);
+
+  const totalAnswers =
+    "http://api.examio.feranmi.tech/api/student/end-exam?examId=3f6ed250-a258-48ba-b7b4-32ba231d7475";
 
   const [showModal3, setShowModal3] = useState(false);
-  const toggleModal = () => {
+  function toggleModal() {
+    fetch(totalAnswers, {
+      method: "GET",
+      headers: {
+        Authorization: "6a57ac37-21cc-46f8-9297-da754fe3972c",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        let score = 0;
+        let answers = userAnswers;
+        for (let i = 0; i < response.answers.length; i++) {
+          if (answers[i] === response.answers[i]) {
+            score++;
+          }
+        }
+        console.log(response);
+        setTotalScore(score);
+        setTotalQuestions(response.answers.length);
+      });
     setShowModal3(!showModal3);
-  };
+  }
 
   const handlePageIncrease = () => {
     if (page === 2) {
@@ -43,7 +69,7 @@ const Demo = (props) => {
     }
   };
 
-  const studentExam = `http://api.examio.feranmi.tech/api/student/take-exam?examId=9f07d69e-c8c3-4751-b497-65933a455ab9&page=${page}`;
+  const studentExam = `http://api.examio.feranmi.tech/api/student/take-exam?examId=3f6ed250-a258-48ba-b7b4-32ba231d7475&page=${page}`;
 
   const [exams, setExams] = useState([]);
   const [course, setCourse] = useState("");
@@ -71,6 +97,13 @@ const Demo = (props) => {
     getExam();
   }, [studentExam]);
 
+  function updateUserAnswers(answer, index) {
+    let arr = userAnswers;
+    arr[index - 1] = answer;
+    setUserAnswers(arr);
+    console.log(index);
+  }
+
   return (
     <div>
       <HomeNav userName={props.userName} />
@@ -95,15 +128,41 @@ const Demo = (props) => {
             </h4>
             <div className="py-3 flex items-center gap-1 ml-10 font-bold pb-[2.5rem] justify-center">
               <span>(A)</span>
-              <input type="radio" name="option" />
+              <input
+                type="radio"
+                name={question.no}
+                onChange={() => {
+                  updateUserAnswers(0, question.no);
+                }}
+                onLoad={(e) => {
+                  console.log(e.target);
+                  if (userAnswers[question.no - 1] === 0) {
+                    e.target.checked = true;
+                  } else {
+                    e.target.checked = false;
+                  }
+                }}
+              />
               <label>{question.options[0].text}</label>
 
               <span className="ml-2">(B)</span>
-              <input type="radio" name="option" />
+              <input
+                type="radio"
+                name={question.no}
+                onChange={() => {
+                  updateUserAnswers(1, question.no);
+                }}
+              />
               <label>{question.options[1].text}</label>
 
               <span className="ml-2">(C)</span>
-              <input type="radio" name="option" />
+              <input
+                type="radio"
+                name={question.no}
+                onChange={() => {
+                  updateUserAnswers(2, question.no);
+                }}
+              />
               <label>{question.options[2].text}</label>
             </div>
           </div>
@@ -114,13 +173,16 @@ const Demo = (props) => {
         <div
           className="flex items-center gap-1 cursor-pointer md:hover:bg-buttonColor md:hover:px-5"
           onClick={handlePageDecrease}
+          style={{ visibility: page === 0 ? "hidden" : "visible" }}
         >
           <AiFillCaretLeft />
           Previous
         </div>
         <div
           className="flex items-center gap-1 cursor-pointer md:hover:bg-buttonColor md:hover:px-5"
-          onClick={toggleModal}
+          onClick={() => {
+            toggleModal();
+          }}
         >
           <BsFillSendFill />
           Submit
@@ -128,12 +190,18 @@ const Demo = (props) => {
         <div
           className="flex items-center gap-1 cursor-pointer md:hover:bg-buttonColor md:hover:px-5"
           onClick={handlePageIncrease}
+          style={{ visibility: page === 2 ? "hidden" : "visible" }}
         >
           <AiFillCaretRight />
           Next
         </div>
       </div>
-      <Modal3 start={showModal3} onStart={toggleModal} />
+      <Modal3
+        start={showModal3}
+        onStart={toggleModal}
+        score={totalScore}
+        questions={totalQuestions}
+      />
     </div>
   );
 };
