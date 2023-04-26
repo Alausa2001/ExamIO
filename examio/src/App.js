@@ -29,11 +29,11 @@ function App() {
         <Route path="/login" element={<Login saveDetails={userDetails} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/homepage" element={<Homepage userName={name} />} />
-        <Route path="/demo" element={<Demotest />} />
-        <Route path="/write-exam" element={<WriteExam />} />
-        <Route path="/history" element={<ExamHistory />} />
-        <Route path="/exam" element={<ExamPage />} />
-        <Route path="/demotest" element={<Demo />} />
+        <Route path="/demo" element={<Demotest userName={name} />} />
+        <Route path="/write-exam" element={<WriteExam userName={name} />} />
+        <Route path="/history" element={<ExamHistory userName={name} />} />
+        <Route path="/exam" element={<ExamPage userName={name} />} />
+        <Route path="/demotest" element={<Demo userName={name} />} />
 
         {/* ============== ROUTES FOR EXAMINER ================ */}
 

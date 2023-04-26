@@ -142,7 +142,7 @@ const Subjects = () => {
       <h2 className="py-5 md:pt-10 text-[1rem] md:text-[1.2rem] font-extrabold">
         Please Select your required Subject(s)
       </h2>
-      <div className="md:grid md:grid-cols-5 Md:gap-2">
+      <div className="w-[50%]">
         <select>
           {Subjects.map((subject) => (
             <option>{subject.subject}</option>

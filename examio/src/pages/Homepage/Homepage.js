@@ -9,7 +9,7 @@ const Homepage = (props) => {
   return (
     <div>
       <HomeNav userName={props.userName} />
-      <div className="bg-lightColor py-20 flex flex-col items-center md:flex-row px-5 md:py-[-10rem] md:px-20 h-[300vh] md:h-[100vh] gap-10">
+      <div className="bg-lightColor py-[6rem] flex flex-col items-center md:flex-row px-5 md:py-[-10rem] md:px-20 h-[300vh] md:h-[100vh] gap-10">
         <Link
           to="/demo"
           className="border-solid border-buttonColor border-[0.3px] drop-shadow-md rounded-lg pb-[1rem] md:hover:scale-105 duration-300 md:hover:bg-buttonColor md:hover:text-lightColor w-[25rem] md:w-[30rem] cursor-pointer"

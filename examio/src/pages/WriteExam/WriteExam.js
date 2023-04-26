@@ -5,7 +5,7 @@ import ExamID from "../../components/ExamID";
 import Timers from "../../components/Timers";
 import Modal2 from "../../components/Modal2";
 
-const WriteExam = () => {
+const WriteExam = (props) => {
   const [showModal2, setShowModal2] = useState(false);
   const toggleModal = () => {
     setShowModal2(!showModal2);
@@ -14,7 +14,7 @@ const WriteExam = () => {
   return (
     <div className="bg-lightColor pb-10">
       <form>
-        <HomeNav />
+        <HomeNav userName={props.userName} />
         <ExamID />
         <Subjects />
         <Timers />

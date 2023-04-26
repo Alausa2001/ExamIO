@@ -261,6 +261,15 @@ const Signup = () => {
           >
             Get Started for Free
           </button>
+          <h3 className="text-center font-bold">
+            Already have an account{" "}
+            <a
+              href="/login"
+              className="font-extrabold text-examiopurple px-2 py-1 md:hover:text-lightColor md:hover:bg-buttonColor"
+            >
+              LOGIN
+            </a>
+          </h3>
         </form>
       </div>
       <Modal open={showModal} onClose={startModal} />

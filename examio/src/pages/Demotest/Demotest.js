@@ -2,11 +2,11 @@ import HomeNav from "../../components/HomeNav";
 import Subjects from "../../components/Subjects";
 import Timers from "../../components/Timers";
 
-const Demotest = () => {
+const Demotest = (props) => {
   return (
-    <div className="bg-lightColor pb-10">
+    <div className="bg-lightColor pb-10 h-[120vh]">
       <form>
-        <HomeNav />
+        <HomeNav userName={props.userName} />
         <Subjects />
         <Timers />
       </form>

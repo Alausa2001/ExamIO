@@ -22,11 +22,14 @@ function Countdown() {
   const seconds = count % 60;
 
   return (
-    <div>
-      <h1>
-        Countdown: {hours}:{minutes < 10 ? "0" : ""}
-        {minutes}:{seconds < 10 ? "0" : ""}
-        {seconds}
+    <div className="bg-lightColor pl-20 pt-5">
+      <h1 className="font-bold text-xl">
+        Countdown:
+        <span className="text-examiopurple font-extrabold pl-3 text-xl tracking-widest">
+          {hours}:{minutes < 10 ? "0" : ""}
+          {minutes}:{seconds < 10 ? "0" : ""}
+          {seconds}{" "}
+        </span>
       </h1>
     </div>
   );
