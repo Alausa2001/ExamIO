@@ -48,12 +48,30 @@ class Examination {
       res.status(404).json({ error: 'exam doesnt exist' });
       return;
     }
-
+    // const ques = await mongod.getQuestions(examId);
     const questions = await mongod.getQuestions(examId, page);
-    res.status(200).json({ totalNoOfQuestions: noOfQues, questions });
+    let ans = [];
+    for (let question of questions) {
+      ans.push(question.correct);
+    }
+    res.status(200).json({ answers: ans, totalNoOfQuestions: noOfQues, questions });
     return;
   }
 
+  static async endExam(req, res) {
+    const { examId } = req.query;
+    if (!examId) {
+      res.status(400).json({ error: "exam doesn't exist" });
+      return;
+    }
+    const questions = await mongod.getQuestions(examId);
+    let ans = [];
+    for (let question of questions) {
+      ans.push(question.correct);
+    }
+    //console.log(questions);
+    res.status(200).json({ answers: ans });
+  }
   static async submitExam(req, res) {
     const { duration, course, score, examId } = req.body;
 

@@ -44,7 +44,7 @@ class QuestionBank {
       { $match: { examId } },
       { $skip: parseInt(page, 10) * 5},
       { $limit: 5 },
-      { $project: { _id: 0, examId: 1, course: 1, question: 1, options: 1 } },
+      { $project: { _id: 0, examId: 1, course: 1, question: 1, options: 1, correct: 1, no: 1} },
     ]
     const questions = await this.quesBank.aggregate(pipeline).toArray();
     return questions;

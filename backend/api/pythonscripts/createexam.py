@@ -25,27 +25,32 @@ def createexam(token):
         {
             'course': 'chemistry',
             'question': 'Which element has the symbol "O"?',
-            'options': [{'text': 'Oxygen', 'correct': True}, {'text': 'Osmium', 'correct': False}, {'text': 'Oganesson', 'correct': False}]
+            'options': [{'text': 'Osmium', 'correct': False}, {'text': 'Oganesson', 'correct': False}, {'text': 'Oxygen', 'correct': True}],
+            'correct': 2
         },
         {
             'course': 'chemistry',
             'question': 'What is the chemical symbol for gold?',
-            'options': [{'text': 'Au', 'correct': True}, {'text': 'Ag', 'correct': False}, {'text': 'Cu', 'correct': False}]
+            'options': [{'text': 'Au', 'correct': True}, {'text': 'Ag', 'correct': False}, {'text': 'Cu', 'correct': False}],
+            'correct': 0
         },
         {
             'course': 'chemistry',
             'question': 'What is the pH of a neutral solution?',
-            'options': [{'text': '7', 'correct': True}, {'text': '14', 'correct': False}, {'text': '1', 'correct': False}]
+            'options': [{'text': '7', 'correct': True}, {'text': '14', 'correct': False}, {'text': '1', 'correct': False}],
+            'correct': 0
         },
         {
             'course': 'chemistry',
             'question': 'What is the common name for sodium chloride?',
-            'options': [{'text': 'Salt', 'correct': True}, {'text': 'Sugar', 'correct': False}, {'text': 'Pepper', 'correct': False}]
+            'options': [{'text': 'Sugar', 'correct': False}, {'text': 'Salt', 'correct': True}, {'text': 'Pepper', 'correct': False}],
+            'correct': 1
         },
         {
             'course': 'chemistry',
             'question': 'What is the chemical formula for water?',
-            'options': [{'text': 'H2O', 'correct': True}, {'text': 'CO2', 'correct': False}, {'text': 'CH4', 'correct': False}]
+            'options': [{'text': 'H2O', 'correct': True}, {'text': 'CO2', 'correct': False}, {'text': 'CH4', 'correct': False}],
+            'correct': 0
         },
         {
             'course': 'chemistry',
