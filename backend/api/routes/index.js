@@ -16,7 +16,7 @@ router.get('/student/history', auth, History.studentRecords);
 router.get('/student/history/:examId', auth, History.studentRecord);
 router.get('/examiner/history', auth, History.examinerRecords)
 router.get('/examiner/get-questions/:examId', auth, History.getQuestions);
-router.get('/examiner/student-results', auth, Examination.results);
+router.get('/examiner/exam-results', auth, Examination.results);
 
 /* post requests */
 router.post('/student/signup', User.studentSignUp);

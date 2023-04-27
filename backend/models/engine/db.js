@@ -121,12 +121,14 @@ class MysqlClient {
   }
 
   async results(primary, foreign, priField, forField, match) {
-    const results = await primary.findAll({
-      attributes: priField,
+    const results = await foreign.findAll({
+      raw: true,
+      attributes: forField,
+      where: match,
+      order: [['score', 'DESC']],
       include: [{
-        model: foreign,
-        attributes: forField,
-        where: { examId: '750d2716-1e58-40fc-b8ed-e3d68ab59150' },
+        model: primary,
+        attributes: priField,
       }],
     });
     console.log('done');

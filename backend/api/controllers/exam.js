@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+const fs = require('fs');
 const { StudentRecords, Student } = require('../../models/student_details');
 const { ExaminerRecords, Examiner } = require('../../models/examiner');
 const { mysqldb, sequelize } = require('../../models/engine/db');
@@ -93,20 +94,47 @@ class Examination {
   }
 
   static async results(req, res) {
-    const { examId } = req.body;
+    const { examId } = req.query;
 
     if (!examId) {
       res.status(400).json({ error: 'exam not specified' });
       return;
     }
     const results = await mysqldb.results(
-      Student, StudentRecords, ['firstname', 'lastname'], ['score']);
+      Student, StudentRecords, ['firstname', 'lastname'], ['score'], { examId });
 
     if (!results) {
       res.status(400).json({ error: 'record not found' });
       return;
     }
-    res.json(results)
+
+    const folder = '/tmp/examio/results/';
+    try {
+      if (!fs.existsSync(folder)) {
+        fs.mkdirSync(folder, { recursive: true });
+      } 
+    } catch(err) {
+      console.log(`${err}`);
+    }
+    const localPath = `${folder}${examId}.txt`;
+
+    if (fs.existsSync(localPath)) {
+      fs.unlink(localPath, (err) => {
+        if (err) console.log(`${err}`);
+      });
+    }
+    fs.writeFile(localPath, 'Firstname, Lastname, Score\n\n', { flag: 'a' }, (err) => {
+      if (err) console.log(`${err}`);
+    });
+    let counter = 0;
+    for (let result of results) {
+      counter++;
+      let format = `${counter}. ${result['Student.firstname']}, ${result['Student.lastname']}, ${result.score}\n`;
+      fs.writeFile(localPath, format, { flag: 'a' }, (err) => {
+        if (err) console.log(`${err}`);
+      });
+    }
+    res.json({ file_location: localPath });
   }
 }
 

@@ -52,6 +52,12 @@ def exam_questions(records, token):
         res = requests.get(f'http://localhost:3000/api/examiner/get-questions/{examId}', headers=header)
         print(res.json())
 
+def result(token):
+    header = {"Authorization": token, "Content-Type": "application/json" }
+    data = {'examId': '750d2716-1e58-40fc-b8ed-e3d68ab59150'}
+    res = requests.get('http://localhost:3000/api/examiner/exam-results', params=data, headers=header)
+    print(res.json())
+
 if __name__ == "__main__":
     signup()
     print('------------------------------------\n')
@@ -62,3 +68,5 @@ if __name__ == "__main__":
     records = exams_created(token)
     print('===================================\n')
     exam_questions(records, token)
+    print('============Records==================\n')
+    result(token)
