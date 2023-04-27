@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import HomeNav from "../../components/HomeNav";
-// import ExamTimer from "../../components/ExamTimer";
 import Timing from "../../components/Timing";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { BsFillSendFill } from "react-icons/bs";
 import { useEffect } from "react";
 import Modal3 from "../../components/Modal3";
+// import ModalLoading from "../../components/ModalLoading";
 
 const Demo = (props) => {
   let [page, setPage] = useState(0);
   let [questionNums, setQuestionNums] = useState([1, 2, 3, 4, 5]);
   let [userAnswers, setUserAnswers] = useState([]);
-  // const [correctAnswers, setCorrectAnswers] = useState([]);
   let [totalScore, setTotalScore] = useState(0);
   let [totalQuestions, setTotalQuestions] = useState(0);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const totalAnswers =
     "http://api.examio.feranmi.tech/api/student/end-exam?examId=3f6ed250-a258-48ba-b7b4-32ba231d7475";
 
   const [showModal3, setShowModal3] = useState(false);
+
   function toggleModal() {
+    // setIsLoading(true);
     fetch(totalAnswers, {
       method: "GET",
       headers: {
@@ -42,6 +44,7 @@ const Demo = (props) => {
         setTotalScore(score);
         setTotalQuestions(response.answers.length);
       });
+    // setIsLoading(false);
     setShowModal3(!showModal3);
   }
 
@@ -53,10 +56,12 @@ const Demo = (props) => {
       const newNums = questionNums.map((num) => {
         return num + 5;
       });
-      // setUserAnswers([]);
+      const radios = document.querySelectorAll('input[type="radio"]');
+      radios.forEach((radio) => {
+        radio.checked = false;
+      });
       console.log(userAnswers);
       setQuestionNums(newNums);
-      setSelectedRadio(null);
     }
   };
 
@@ -68,7 +73,6 @@ const Demo = (props) => {
       const newNums = questionNums.map((num) => {
         return num - 5;
       });
-      // setUserAnswers([]);
       console.log(userAnswers);
       setQuestionNums(newNums);
     }
@@ -80,6 +84,7 @@ const Demo = (props) => {
   const [course, setCourse] = useState("");
 
   useEffect(() => {
+    console.log(props);
     const getExam = () => {
       fetch(studentExam, {
         method: "GET",
@@ -102,22 +107,23 @@ const Demo = (props) => {
     getExam();
   }, [studentExam]);
 
-  const [selectedRadio, setSelectedRadio] = useState(null);
-
-  function handleRadioChange(e) {
-    setSelectedRadio(e.target.value);
-  }
-
   function updateUserAnswers(answer, index) {
-    let arr = userAnswers;
-    arr[index - 1] = answer;
-    setUserAnswers(arr);
+    setUserAnswers((prevAnswers) => [
+      ...prevAnswers.slice(0, index - 1),
+      answer,
+      ...prevAnswers.slice(index),
+      // let arr = userAnswers;
+      // arr[index - 1] = answer;
+      // setUserAnswers(arr);
+    ]);
+
     console.log(index);
+    console.log(userAnswers);
   }
 
   return (
     <div>
-      <HomeNav userName={props.userName} />
+      <HomeNav userName={localStorage.getItem("fullName")} />
       <div>
         <Timing />
       </div>
@@ -143,19 +149,11 @@ const Demo = (props) => {
                 type="radio"
                 name={question.no}
                 value={0}
-                checked={selectedRadio === 0}
+                checked={userAnswers[question.no - 1] === 0}
                 onChange={(e) => {
-                  updateUserAnswers(e.target.value, question.no);
-                  handleRadioChange();
+                  updateUserAnswers(0, question.no);
+                  console.log(e.target.value);
                 }}
-                // onLoad={(e) => {
-                //   // console.log(e.target);
-                //   if (userAnswers[question.no - 1] === 0) {
-                //     e.target.checked = true;
-                //   } else {
-                //     e.target.checked = false;
-                //   }
-                // }}
               />
               <label>{question.options[0].text}</label>
 
@@ -164,10 +162,10 @@ const Demo = (props) => {
                 type="radio"
                 name={question.no}
                 value={1}
-                checked={selectedRadio === 1}
+                checked={userAnswers[question.no - 1] === 1}
                 onChange={(e) => {
-                  updateUserAnswers(e.target.value, question.no);
-                  handleRadioChange();
+                  updateUserAnswers(1, question.no);
+                  console.log(e.target.value);
                 }}
               />
               <label>{question.options[1].text}</label>
@@ -177,10 +175,10 @@ const Demo = (props) => {
                 type="radio"
                 name={question.no}
                 value={2}
-                checked={selectedRadio === 2}
+                checked={userAnswers[question.no - 1] === 2}
                 onChange={(e) => {
-                  updateUserAnswers(e.target.value, question.no);
-                  handleRadioChange();
+                  updateUserAnswers(2, question.no);
+                  console.log(e.target.value);
                 }}
               />
               <label>{question.options[2].text}</label>

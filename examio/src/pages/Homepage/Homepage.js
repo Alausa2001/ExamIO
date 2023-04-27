@@ -5,10 +5,10 @@ import result from "./images/view_result.png";
 import { Link } from "react-router-dom";
 import HomeNav from "../../components/HomeNav";
 
-const Homepage = (props) => {
+const Homepage = () => {
   return (
     <div>
-      <HomeNav userName={props.userName} />
+      <HomeNav userName={localStorage.getItem("fullName")} />
       <div className="bg-lightColor py-[6rem] flex flex-col items-center md:flex-row px-5 md:py-[-10rem] md:px-20 h-[300vh] md:h-[100vh] gap-10">
         <Link
           to="/demo"

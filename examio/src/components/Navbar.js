@@ -47,16 +47,16 @@ const Navbar = () => {
                   <ul className="flex flex-col gap-2 bg-lightColor p-2">
                     {/* add whatever you wanna add here. Eg links, images, etc */}
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Conduct Exams/Quiz
+                      <a href="/signup">Conduct Exams/Quiz</a>
                     </li>
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Schedule Exams
+                      <a href="/signup">Schedule Exams</a>
                     </li>
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Write Exams
+                      <a href="/signup">Write Exams</a>
                     </li>
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Exam Analysis
+                      <a href="/signup">Exam Analysis</a>
                     </li>
                   </ul>
                 </div>
@@ -131,16 +131,16 @@ const Navbar = () => {
                   <ul className="flex flex-col gap-2 bg-lightColor p-2">
                     {/* add whatever you wanna add here. Eg links, images, etc */}
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Conduct Exams/Quiz
+                      <a href="/signup">Conduct Exams/Quiz</a>
                     </li>
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Schedule Exams
+                      <a href="/signup">Schedule Exams</a>
                     </li>
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Write Exams
+                      <a href="/signup">Write Exams</a>
                     </li>
                     <li className="font-semibold md:hover:text-buttonColor transition duration-500 w-full">
-                      Exam Analysis
+                      <a href="/signup">Exam Analysis</a>
                     </li>
                   </ul>
                 </div>

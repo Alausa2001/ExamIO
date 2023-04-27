@@ -2,11 +2,11 @@ import HomeNav from "../../components/HomeNav";
 import Subjects from "../../components/Subjects";
 import Timers from "../../components/Timers";
 
-const Demotest = (props) => {
+const Demotest = () => {
   return (
     <div className="bg-lightColor pb-10 h-[120vh]">
       <form>
-        <HomeNav userName={props.userName} />
+        <HomeNav userName={localStorage.getItem("fullName")} />
         <Subjects />
         <Timers />
       </form>

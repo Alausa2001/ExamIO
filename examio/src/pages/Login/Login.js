@@ -41,6 +41,10 @@ const Login = (props) => {
       props.saveDetails(data);
 
       localStorage.setItem("examiner_ID", data.examinerId);
+      localStorage.setItem(
+        "fullName",
+        data.student.firstName + " " + data.student.lastName
+      );
 
       navigate("/homepage");
     }
@@ -115,6 +119,15 @@ const Login = (props) => {
           >
             Log In
           </button>
+          <h3 className="text-center font-bold">
+            Don't have an account?{" "}
+            <a
+              href="/signup"
+              className="font-extrabold text-examiopurple px-2 py-1 md:hover:text-lightColor md:hover:bg-buttonColor"
+            >
+              LOGIN
+            </a>
+          </h3>
         </form>
       </div>
     </div>

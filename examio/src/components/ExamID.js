@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ExamID = () => {
   const [examID, setExamID] = useState("");
@@ -13,6 +13,8 @@ const ExamID = () => {
     cName: "bg-lightColor px-10 md:px-20 pt-10",
     labelCName: "text-[1.5rem] font-bold",
   };
+
+  useEffect(() => {}, []);
 
   return (
     <div className={examId.cName}>

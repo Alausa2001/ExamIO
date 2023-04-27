@@ -11,36 +11,39 @@ import ExamPage from "./pages/ExamPage/ExamPage";
 import Demo from "./pages/Demo/Demo";
 import ExaminerHome from "./pagesExaminer/Homepage/ExaminerHome";
 import ExaminerDemo from "./pagesExaminer/ExaminerDemo/ExaminerDemo";
-import { useState } from "react";
+import { useState, createContext } from "react";
+
+const userContext = createContext();
 
 function App() {
   const [name, setName] = useState("");
 
   const userDetails = (data) => {
     let fullName = data.student.firstName + " " + data.student.lastName;
-    console.log("Hi");
     setName(fullName);
   };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login saveDetails={userDetails} />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/homepage" element={<Homepage userName={name} />} />
-        <Route path="/demo" element={<Demotest userName={name} />} />
-        <Route path="/write-exam" element={<WriteExam userName={name} />} />
-        <Route path="/history" element={<ExamHistory userName={name} />} />
-        <Route path="/exam" element={<ExamPage userName={name} />} />
-        <Route path="/demotest" element={<Demo userName={name} />} />
+    <userContext.Provider value={name}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login saveDetails={userDetails} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/homepage" element={<Homepage userName={name} />} />
+          <Route path="/demo" element={<Demotest userName={name} />} />
+          <Route path="/write-exam" element={<WriteExam userName={name} />} />
+          <Route path="/history" element={<ExamHistory userName={name} />} />
+          <Route path="/exam" element={<ExamPage userName={name} />} />
+          <Route path="/demotest" element={<Demo userName={name} />} />
 
-        {/* ============== ROUTES FOR EXAMINER ================ */}
+          {/* ============== ROUTES FOR EXAMINER ================ */}
 
-        <Route path="/examiner" element={<ExaminerHome />} />
-        <Route path="/examinerdemo" element={<ExaminerDemo />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/examiner" element={<ExaminerHome />} />
+          <Route path="/examinerdemo" element={<ExaminerDemo />} />
+        </Routes>
+      </BrowserRouter>
+    </userContext.Provider>
   );
 }
 
