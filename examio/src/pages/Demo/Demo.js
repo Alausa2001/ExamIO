@@ -53,7 +53,10 @@ const Demo = (props) => {
       const newNums = questionNums.map((num) => {
         return num + 5;
       });
+      // setUserAnswers([]);
+      console.log(userAnswers);
       setQuestionNums(newNums);
+      setSelectedRadio(null);
     }
   };
 
@@ -65,6 +68,8 @@ const Demo = (props) => {
       const newNums = questionNums.map((num) => {
         return num - 5;
       });
+      // setUserAnswers([]);
+      console.log(userAnswers);
       setQuestionNums(newNums);
     }
   };
@@ -96,6 +101,12 @@ const Demo = (props) => {
     };
     getExam();
   }, [studentExam]);
+
+  const [selectedRadio, setSelectedRadio] = useState(null);
+
+  function handleRadioChange(e) {
+    setSelectedRadio(e.target.value);
+  }
 
   function updateUserAnswers(answer, index) {
     let arr = userAnswers;
@@ -131,17 +142,20 @@ const Demo = (props) => {
               <input
                 type="radio"
                 name={question.no}
-                onChange={() => {
-                  updateUserAnswers(0, question.no);
+                value={0}
+                checked={selectedRadio === 0}
+                onChange={(e) => {
+                  updateUserAnswers(e.target.value, question.no);
+                  handleRadioChange();
                 }}
-                onLoad={(e) => {
-                  console.log(e.target);
-                  if (userAnswers[question.no - 1] === 0) {
-                    e.target.checked = true;
-                  } else {
-                    e.target.checked = false;
-                  }
-                }}
+                // onLoad={(e) => {
+                //   // console.log(e.target);
+                //   if (userAnswers[question.no - 1] === 0) {
+                //     e.target.checked = true;
+                //   } else {
+                //     e.target.checked = false;
+                //   }
+                // }}
               />
               <label>{question.options[0].text}</label>
 
@@ -149,8 +163,11 @@ const Demo = (props) => {
               <input
                 type="radio"
                 name={question.no}
-                onChange={() => {
-                  updateUserAnswers(1, question.no);
+                value={1}
+                checked={selectedRadio === 1}
+                onChange={(e) => {
+                  updateUserAnswers(e.target.value, question.no);
+                  handleRadioChange();
                 }}
               />
               <label>{question.options[1].text}</label>
@@ -159,8 +176,11 @@ const Demo = (props) => {
               <input
                 type="radio"
                 name={question.no}
-                onChange={() => {
-                  updateUserAnswers(2, question.no);
+                value={2}
+                checked={selectedRadio === 2}
+                onChange={(e) => {
+                  updateUserAnswers(e.target.value, question.no);
+                  handleRadioChange();
                 }}
               />
               <label>{question.options[2].text}</label>
